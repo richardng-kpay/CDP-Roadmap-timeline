@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KPay Martech Roadmap & Timeline v1.1</title>
+<style>
+:root {
+  --bg: #FAFAF8; --bg2: #F1EFE8; --bg3: #E8E6DF;
+  --text: #1A1A18; --text2: #5F5E5A; --text3: #888780;
+  --border: rgba(0,0,0,0.12);
+  --purple: #534AB7; --purple-bg: #EEEDFE; --purple-text: #3C3489;
+  --teal: #0F6E56; --teal-bg: #E1F5EE; --teal-text: #085041;
+  --coral: #D85A30; --coral-bg: #FAECE7; --coral-text: #712B13;
+  --amber: #BA7517; --amber-bg: #FAEEDA; --amber-text: #633806;
+  --green: #639922; --green-bg: #EAF3DE; --green-text: #27500A;
+  --blue: #185FA5; --blue-bg: #E6F1FB; --blue-text: #0C447C;
+  --pink: #993556; --pink-bg: #FBEAF0; --pink-text: #72243E;
+  --red: #B73A3A; --red-bg: #FCEBEB; --red-text: #791F1F;
+  --font: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1A1A18; --bg2: #2C2C2A; --bg3: #3D3D3A;
+    --text: #E8E6DF; --text2: #B4B2A9; --text3: #888780;
+    --border: rgba(255,255,255,0.12);
+    --purple-bg: #26215C; --purple-text: #CECBF6;
+    --teal-bg: #04342C; --teal-text: #9FE1CB;
+    --coral-bg: #4A1B0C; --coral-text: #F5C4B3;
+    --amber-bg: #412402; --amber-text: #FAC775;
+    --green-bg: #173404; --green-text: #C0DD97;
+    --blue-bg: #042C53; --blue-text: #B5D4F4;
+    --pink-bg: #4B1528; --pink-text: #F4C0D1;
+    --red-bg: #501313; --red-text: #F7C1C1;
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  padding: 32px 24px 64px;
+  max-width: 1080px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* HEADER */
+.header { margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1.5px solid var(--border); }
+.header h1 { font-size: 26px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.2px; }
+.header .sub { font-size: 14px; color: var(--text2); margin-bottom: 14px; }
+.ver { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 500; background: var(--blue-bg); color: var(--blue-text); margin-left: 8px; vertical-align: middle; }
+.headline-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 16px; }
+.hc { padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 10px; background: var(--bg2); }
+.hc .val { font-size: 18px; font-weight: 600; color: var(--text); }
+.hc .lbl { font-size: 11px; color: var(--text3); margin-top: 3px; line-height: 1.3; }
+.hc.accent { border-color: var(--purple); background: var(--purple-bg); }
+.hc.accent .val { color: var(--purple-text); }
+
+/* SECTIONS */
+.section { margin-top: 32px; }
+.s-title { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 4px; display: flex; align-items: center; gap: 10px; }
+.s-num { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; background: var(--purple-bg); color: var(--purple-text); }
+.s-sub { font-size: 13px; color: var(--text2); margin-bottom: 14px; }
+
+/* PROBLEM CARDS */
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.prob-card { border: 1.5px solid var(--border); border-radius: 10px; padding: 14px 16px; background: var(--bg2); }
+.prob-card .q-num { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px; background: var(--coral-bg); color: var(--coral-text); margin-bottom: 6px; }
+.prob-card .q-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.prob-card .q-state { font-size: 12px; color: var(--text2); line-height: 1.55; margin-bottom: 8px; }
+.prob-card .q-cost { font-size: 12px; color: var(--red-text); background: var(--red-bg); padding: 8px 10px; border-radius: 6px; line-height: 1.5; border-left: 2px solid var(--red); }
+.prob-card .q-cost b { font-weight: 600; }
+
+/* STACK CARDS */
+.stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.stack-card { border: 1.5px solid var(--border); border-radius: 10px; padding: 14px 16px; background: var(--bg2); }
+.stack-card.cdp { border-color: var(--purple); background: var(--purple-bg); }
+.stack-card.cep { border-color: var(--teal); background: var(--teal-bg); }
+.stack-card .layer-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 4px; }
+.stack-card.cdp .layer-tag { color: var(--purple-text); }
+.stack-card.cep .layer-tag { color: var(--teal-text); }
+.stack-card .layer-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+.stack-card ul { list-style: none; padding: 0; }
+.stack-card li { font-size: 12px; color: var(--text2); padding: 3px 0 3px 14px; position: relative; line-height: 1.5; }
+.stack-card li:before { content: '•'; position: absolute; left: 4px; color: var(--text3); }
+.stack-card li b { color: var(--text); font-weight: 600; }
+.flow-arrow { text-align: center; padding: 6px 0; font-size: 16px; color: var(--text3); }
+.flow-note { font-size: 12px; color: var(--text3); background: var(--bg3); padding: 8px 12px; border-radius: 6px; margin-top: 8px; line-height: 1.55; border-left: 2px solid var(--purple); }
+
+/* NSM FRAMEWORK BLOCK */
+.nsm-block { margin-bottom: 16px; }
+.nsm-row { margin-bottom: 10px; }
+.nsm-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.nsm-card { border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 14px; background: var(--bg2); }
+.nsm-card .nsm-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; }
+.nsm-card .nsm-metric { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.nsm-card .nsm-unit { font-size: 12px; font-weight: 500; color: var(--text2); }
+.nsm-card .nsm-desc { font-size: 12px; color: var(--text2); line-height: 1.55; }
+.nsm-card .nsm-desc b { color: var(--text); font-weight: 600; }
+.nsm-card ul { list-style: none; padding: 0; margin: 0; }
+.nsm-card li { font-size: 11.5px; color: var(--text2); padding: 3px 0 3px 12px; position: relative; line-height: 1.5; }
+.nsm-card li:before { content: '·'; position: absolute; left: 2px; font-weight: 700; color: var(--text3); }
+.nsm-card li b { color: var(--text); font-weight: 600; }
+.nsm-card.nsm-north { border: 2px solid var(--purple); background: var(--purple-bg); }
+.nsm-card.nsm-north .nsm-tag { color: var(--purple-text); }
+.nsm-card.nsm-supp { border-color: var(--teal); background: var(--teal-bg); }
+.nsm-card.nsm-supp .nsm-tag { color: var(--teal-text); }
+.nsm-card.nsm-guard { border-color: var(--amber); background: var(--amber-bg); }
+.nsm-card.nsm-guard .nsm-tag { color: var(--amber-text); }
+.nsm-card.nsm-trade { border-color: var(--text3); background: var(--bg3); }
+.nsm-card.nsm-trade .nsm-tag { color: var(--text2); }
+
+/* OUTCOMES TABLE */
+.outcomes-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+.outcomes-table th { background: var(--bg3); color: var(--text2); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+.outcomes-table td { padding: 12px; vertical-align: top; font-size: 12.5px; line-height: 1.5; color: var(--text2); border-bottom: 1px solid var(--border); }
+.outcomes-table tr:last-child td { border-bottom: none; }
+.outcomes-table td.outcome-name { font-weight: 600; color: var(--text); font-size: 13px; width: 18%; }
+.outcomes-table td.metric { width: 18%; }
+.outcomes-table .metric-pill { display: inline-block; padding: 3px 9px; border-radius: 6px; font-size: 11px; font-weight: 500; background: var(--purple-bg); color: var(--purple-text); }
+.outcomes-table .proof { font-size: 11.5px; color: var(--text3); width: 28%; font-style: italic; }
+.outcomes-table .proof b { font-weight: 600; color: var(--text2); font-style: normal; }
+
+/* BUY vs BUILD SPRINT TABLE */
+.sprint-callout { background: var(--amber-bg); border-left: 3px solid var(--amber); padding: 10px 14px; border-radius: 6px; font-size: 12px; color: var(--amber-text); margin-bottom: 12px; line-height: 1.6; }
+.sprint-callout b { font-weight: 600; }
+.sprint-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+.sprint-table th { background: var(--bg3); color: var(--text2); font-size: 11px; font-weight: 600; padding: 10px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+.sprint-table th.buy-col { background: var(--blue-bg); color: var(--blue-text); }
+.sprint-table th.build-col { background: var(--red-bg); color: var(--red-text); }
+.sprint-table th.gate-col { background: var(--bg3); color: var(--text2); }
+.sprint-table td { padding: 11px 10px; vertical-align: top; font-size: 12px; line-height: 1.5; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+.sprint-table td:last-child { border-right: none; }
+.sprint-table tr:last-child td { border-bottom: none; }
+.sprint-table .sprint-cell { width: 8%; font-weight: 600; background: var(--bg2); color: var(--text); }
+.sprint-table .wk-cell { width: 8%; font-size: 11px; color: var(--text3); background: var(--bg2); }
+.sprint-table .buy-cell { width: 31%; background: var(--bg); }
+.sprint-table .buy-cell.win { background: var(--blue-bg); }
+.sprint-table .build-cell { width: 31%; background: var(--bg); }
+.sprint-table .build-cell.fail { background: var(--red-bg); }
+.sprint-table .gate-cell { width: 22%; font-size: 11px; color: var(--text2); background: var(--bg2); }
+.sprint-table .gate-cell.gate { background: var(--amber-bg); color: var(--amber-text); }
+.sprint-table .milestone { font-weight: 600; color: var(--blue-text); font-size: 11px; display: inline-block; padding: 2px 7px; border-radius: 4px; background: var(--blue-bg); margin-bottom: 4px; }
+.sprint-table .blocker { font-weight: 600; color: var(--red-text); font-size: 11px; display: inline-block; padding: 2px 7px; border-radius: 4px; background: var(--red-bg); margin-bottom: 4px; }
+.sprint-table b { font-weight: 600; color: var(--text); }
+.sprint-table .outcome { display: block; margin-top: 6px; padding: 4px 8px; border-radius: 4px; font-size: 11.5px; }
+.sprint-table .outcome.win { background: var(--green-bg); color: var(--green-text); }
+.sprint-table .outcome.fail { background: var(--red-bg); color: var(--red-text); }
+.sprint-table ul.cell-bullets { list-style: none; padding: 0; margin: 0; }
+.sprint-table ul.cell-bullets li { font-size: 11.5px; padding: 3px 0 3px 12px; position: relative; line-height: 1.45; color: var(--text2); }
+.sprint-table ul.cell-bullets li:before { content: '•'; position: absolute; left: 2px; color: var(--text3); font-weight: 600; }
+.sprint-table ul.cell-bullets li b { color: var(--text); font-weight: 600; }
+.sprint-table ul.cell-bullets li.star { color: var(--text); font-weight: 600; padding-left: 14px; }
+.sprint-table ul.cell-bullets li.star:before { content: '⭐'; left: 0; }
+.sprint-table ul.gate-bullets { list-style: none; padding: 0; margin: 0; }
+.sprint-table ul.gate-bullets li { font-size: 11px; padding: 3px 0; line-height: 1.45; }
+
+/* VERDICT BLOCK */
+.verdict-block { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.verdict-card { border: 1.5px solid; border-radius: 10px; padding: 14px 18px; }
+.verdict-card.buy { border-color: var(--green); background: var(--green-bg); }
+.verdict-card.build { border-color: var(--red); background: var(--red-bg); }
+.verdict-card .v-h { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+.verdict-card.buy .v-h { color: var(--green-text); }
+.verdict-card.build .v-h { color: var(--red-text); }
+.verdict-card ul { list-style: none; padding: 0; margin: 0; }
+.verdict-card li { font-size: 12.5px; padding: 4px 0 4px 16px; position: relative; line-height: 1.5; color: var(--text2); }
+.verdict-card.buy li:before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 600; }
+.verdict-card.build li:before { content: '✗'; position: absolute; left: 0; color: var(--red); font-weight: 600; }
+.verdict-card li b { color: var(--text); font-weight: 600; }
+
+/* PHASE CHEVRON */
+.phase-chevrons { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 16px 0; }
+.phase-chev { padding: 14px 14px 12px; border-radius: 10px; border: 1.5px solid var(--border); position: relative; }
+.phase-chev.p0 { background: var(--green-bg); border-color: var(--green); }
+.phase-chev.p1 { background: var(--blue-bg); border-color: var(--blue); }
+.phase-chev.p2 { background: var(--amber-bg); border-color: var(--amber); }
+.phase-chev.p3 { background: var(--purple-bg); border-color: var(--purple); }
+.phase-chev.p4 { background: var(--pink-bg); border-color: var(--pink); }
+.phase-chev .ph-num { font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 3px; }
+.phase-chev.p0 .ph-num { color: var(--green-text); }
+.phase-chev.p1 .ph-num { color: var(--blue-text); }
+.phase-chev.p2 .ph-num { color: var(--amber-text); }
+.phase-chev.p3 .ph-num { color: var(--purple-text); }
+.phase-chev.p4 .ph-num { color: var(--pink-text); }
+.phase-chev .ph-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 5px; line-height: 1.3; }
+.phase-chev .ph-when { font-size: 11px; color: var(--text2); margin-bottom: 6px; }
+.phase-chev .ph-desc { font-size: 11px; color: var(--text2); line-height: 1.45; }
+.principle { background: var(--purple-bg); border: 1px solid var(--purple); border-radius: 8px; padding: 10px 14px; font-size: 12.5px; color: var(--purple-text); margin-bottom: 14px; line-height: 1.5; }
+.principle b { font-weight: 600; }
+
+/* GANTT */
+.gantt-wrap { overflow-x: auto; margin-top: 10px; }
+.gantt-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; min-width: 900px; }
+.gantt-table th { background: var(--bg3); color: var(--text2); font-size: 11px; font-weight: 600; padding: 8px 6px; text-align: center; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+.gantt-table th.ws-header { text-align: left; padding-left: 12px; width: 30%; }
+.gantt-table td { padding: 8px 6px; font-size: 11px; vertical-align: middle; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); height: 38px; }
+.gantt-table tr:last-child td { border-bottom: none; }
+.gantt-table td.ws { padding-left: 12px; font-size: 12px; color: var(--text); font-weight: 500; background: var(--bg2); width: 30%; line-height: 1.4; }
+.gantt-table td.ws .ws-note { font-size: 10.5px; color: var(--text3); font-weight: 400; margin-top: 2px; }
+.gantt-table td.bar { text-align: center; font-size: 10px; font-weight: 500; color: var(--text2); }
+.gantt-table .phase-row td { background: var(--bg3); font-weight: 600; font-size: 11px; padding: 7px 12px; color: var(--text); }
+.gantt-table .phase-row.p0 td { background: var(--green-bg); color: var(--green-text); }
+.gantt-table .phase-row.p1 td { background: var(--blue-bg); color: var(--blue-text); }
+.gantt-table .phase-row.p2 td { background: var(--amber-bg); color: var(--amber-text); }
+.gantt-table .phase-row.p3 td { background: var(--purple-bg); color: var(--purple-text); }
+.gantt-table .bar.p0 { background: var(--green-bg); color: var(--green-text); }
+.gantt-table .bar.p1 { background: var(--blue-bg); color: var(--blue-text); }
+.gantt-table .bar.p2 { background: var(--amber-bg); color: var(--amber-text); }
+.gantt-table .bar.p3 { background: var(--purple-bg); color: var(--purple-text); }
+.gantt-table .bar.gate { background: var(--coral-bg); color: var(--coral-text); font-weight: 600; }
+.gantt-table .bar.go { background: var(--green-bg); color: var(--green-text); font-weight: 600; }
+.gantt-table .bar.qa { background: var(--bg3); color: var(--text3); font-weight: 500; }
+
+/* STATUS COMPARE */
+.status-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.status-card { border: 1.5px solid; border-radius: 10px; padding: 16px 18px; }
+.status-card.buy { border-color: var(--blue); background: var(--blue-bg); }
+.status-card.build { border-color: var(--red); background: var(--red-bg); }
+.status-card .sc-h { font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 4px; }
+.status-card.buy .sc-h { color: var(--blue-text); }
+.status-card.build .sc-h { color: var(--red-text); }
+.status-card .sc-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+.status-card ul { list-style: none; padding: 0; }
+.status-card li { font-size: 12.5px; padding: 3px 0 3px 18px; position: relative; line-height: 1.5; color: var(--text2); }
+.status-card.buy li:before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 600; }
+.status-card.build li:before { content: '✗'; position: absolute; left: 0; color: var(--red); font-weight: 600; }
+
+/* RESOURCES TABLE */
+.res-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+.res-table th { background: var(--bg3); color: var(--text2); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+.res-table th.buy-col { background: var(--blue-bg); color: var(--blue-text); }
+.res-table th.build-col { background: var(--red-bg); color: var(--red-text); }
+.res-table td { padding: 12px; vertical-align: top; font-size: 12px; line-height: 1.5; color: var(--text2); border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+.res-table td:last-child { border-right: none; }
+.res-table tr:last-child td { border-bottom: none; }
+.res-table td.role { font-weight: 600; color: var(--text); width: 18%; background: var(--bg2); }
+.res-table td b { font-weight: 600; color: var(--text); }
+.res-table td.buy { background: var(--bg); }
+.res-table td.build { background: var(--bg); }
+.res-table tr.total td { background: var(--bg2); font-weight: 500; color: var(--text); }
+
+/* INVESTMENT */
+.inv-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+.inv-table th { background: var(--bg3); color: var(--text2); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+.inv-table td { padding: 11px 12px; vertical-align: top; font-size: 12px; line-height: 1.5; color: var(--text2); border-bottom: 1px solid var(--border); }
+.inv-table tr:last-child td { border-bottom: none; }
+.inv-table td.line { font-weight: 500; color: var(--text); width: 28%; }
+.inv-table td.amt { font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; width: 12%; }
+.inv-table td.amt.green { color: var(--green-text); }
+.inv-table td.amt.red { color: var(--red-text); }
+.inv-table td.note { font-size: 11.5px; color: var(--text3); width: 36%; }
+.inv-table tr.total td { background: var(--purple-bg); font-weight: 600; color: var(--purple-text); border-top: 1.5px solid var(--purple); }
+
+.nsm-card .p0-tag { background: var(--red-bg); color: var(--red-text); border-radius: 3px; padding: 1px 5px; font-size: 9px; font-weight: 600; margin-right: 4px; letter-spacing: 0.3px; }
+.nsm-card .p1-tag { background: var(--amber-bg); color: var(--amber-text); border-radius: 3px; padding: 1px 5px; font-size: 9px; font-weight: 600; margin-right: 4px; letter-spacing: 0.3px; }
+.nsm-card .p2-tag { background: var(--bg3); color: var(--text2); border-radius: 3px; padding: 1px 5px; font-size: 9px; font-weight: 600; margin-right: 4px; letter-spacing: 0.3px; }
+
+.pri-p0 { font-size: 9px; color: var(--red-text); font-weight: 600; margin-left: 4px; }
+.pri-p1 { font-size: 9px; color: var(--amber-text); font-weight: 600; margin-left: 4px; }
+.pri-p2 { font-size: 9px; color: var(--text3); font-weight: 600; margin-left: 4px; }
+.pri-p3 { font-size: 9px; color: var(--text3); font-weight: 500; margin-left: 4px; opacity: 0.7; }
+.metric-pill-muted { display: inline-block; margin-top: 4px; background: var(--bg3); color: var(--text3); border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 500; }
+.metric-pill-stack { display: inline-block; margin-top: 4px; }
+
+/* DEPENDENCY GRID */
+.dep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
+.dep-card { border: 1.5px solid var(--border); border-radius: 10px; padding: 14px 16px; background: var(--bg2); }
+.dep-card .dep-h { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.dep-card ul { list-style: none; padding: 0; margin: 0; }
+.dep-card li { font-size: 12px; color: var(--text2); padding: 4px 0 4px 14px; position: relative; line-height: 1.5; }
+.dep-card li:before { content: '○'; position: absolute; left: 0; color: var(--text3); font-size: 10px; top: 5px; }
+.dep-card li b { color: var(--text); font-weight: 600; }
+
+/* CALLOUTS */
+.callout { padding: 12px 16px; border-radius: 8px; font-size: 12.5px; line-height: 1.6; margin-top: 12px; }
+.callout.info { background: var(--blue-bg); color: var(--blue-text); border-left: 3px solid var(--blue); }
+.callout.warn { background: var(--amber-bg); color: var(--amber-text); border-left: 3px solid var(--amber); }
+.callout.success { background: var(--green-bg); color: var(--green-text); border-left: 3px solid var(--green); }
+.callout b { font-weight: 600; }
+
+/* COLLAPSIBLE BUILD GANTT */
+.build-collapse { margin-top: 14px; border: 1.5px solid var(--red); border-radius: 10px; background: var(--bg2); overflow: hidden; }
+.build-collapse summary { padding: 14px 18px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--red-text); background: var(--red-bg); list-style: none; display: flex; align-items: center; gap: 10px; user-select: none; }
+.build-collapse summary::-webkit-details-marker { display: none; }
+.build-collapse summary:before { content: '▶'; font-size: 10px; color: var(--red-text); transition: transform 0.2s; display: inline-block; }
+.build-collapse[open] summary:before { transform: rotate(90deg); }
+.build-collapse summary .b-tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px; background: var(--red); color: white; letter-spacing: 0.3px; }
+.build-collapse summary .b-meta { margin-left: auto; font-size: 11px; font-weight: 500; color: var(--red-text); opacity: 0.85; }
+.build-collapse .b-body { padding: 16px 18px 18px; }
+.build-collapse .b-intro { font-size: 12.5px; color: var(--text2); line-height: 1.6; margin-bottom: 12px; }
+.build-collapse .b-callout { background: var(--amber-bg); border-left: 3px solid var(--amber); padding: 10px 14px; border-radius: 6px; font-size: 12px; color: var(--amber-text); margin-bottom: 12px; line-height: 1.6; }
+.build-collapse .b-callout b { font-weight: 600; }
+.build-collapse .b-callout ul { margin: 6px 0 0 16px; padding: 0; }
+.build-collapse .b-callout li { font-size: 11.5px; padding: 2px 0; }
+.gantt-table .phase-row.pre td { background: var(--coral-bg); color: var(--coral-text); }
+.gantt-table .phase-row.bp1 td { background: var(--amber-bg); color: var(--amber-text); }
+.gantt-table .phase-row.bp2 td { background: var(--pink-bg); color: var(--pink-text); }
+.gantt-table .phase-row.bp3 td { background: var(--red-bg); color: var(--red-text); }
+.gantt-table .bar.pre { background: var(--coral-bg); color: var(--coral-text); }
+.gantt-table .bar.bp1 { background: var(--amber-bg); color: var(--amber-text); }
+.gantt-table .bar.bp2 { background: var(--pink-bg); color: var(--pink-text); }
+.gantt-table .bar.bp3 { background: var(--red-bg); color: var(--red-text); }
+.gantt-table .bar.gate-red { background: var(--red); color: white; font-weight: 600; }
+.gantt-table .bar.qa-red { background: var(--bg3); color: var(--red-text); font-weight: 500; }
+.build-status-box { margin-top: 14px; padding: 12px 16px; background: var(--red-bg); border-left: 3px solid var(--red); border-radius: 6px; font-size: 12.5px; color: var(--red-text); line-height: 1.6; }
+.build-status-box b { font-weight: 600; }
+
+/* FOOTER */
+.footer { margin-top: 40px; padding-top: 18px; border-top: 1.5px solid var(--border); font-size: 11px; color: var(--text3); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.legend-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 11px; color: var(--text3); margin-top: 10px; }
+.legend-row .lg { display: inline-flex; align-items: center; gap: 5px; }
+.legend-row .sw { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+
+@media (max-width: 768px) {
+  body { padding: 20px 14px; }
+  .header h1 { font-size: 21px; }
+  .headline-cards { grid-template-columns: repeat(2, 1fr); }
+  .problem-grid, .stack-grid, .status-compare, .verdict-block, .dep-grid { grid-template-columns: 1fr; }
+  .nsm-grid { grid-template-columns: 1fr; }
+  .phase-chevrons { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>KPay Martech Roadmap & Timeline<span class="ver">v1.1</span></h1>
+  <div class="sub">Updated May 21, 2026 · Vendor evaluation complete · Patrick (Head of Digital Growth) reviewed · Pending COO sign-off · Author: Rich Constantine, Martech PM</div>
+  <div class="headline-cards">
+    <div class="hc accent">
+      <div class="val">Amplitude ✓</div>
+      <div class="lbl">Vendor selected · Growth plan · Patrick go signal received · Pending Martin approval</div>
+    </div>
+    <div class="hc">
+      <div class="val">$60K – $80K/yr</div>
+      <div class="lbl">3-year term recommended · Growth plan · Pending Martin approval</div>
+    </div>
+    <div class="hc">
+      <div class="val">Aug 27, 2026</div>
+      <div class="lbl">⛔ OneID hard gate — use cases degraded until Aug 27 delivery confirmed</div>
+    </div>
+    <div class="hc">
+      <div class="val">~$155K + 6–8mo</div>
+      <div class="lbl">Cost & capability gap if we build in-house vs Buy</div>
+    </div>
+  </div>
+</div>
+
+<!-- VENDOR EVALUATION + ONEID GATE -->
+<div class="section">
+  <div class="s-title"><span class="s-num" style="background:var(--teal-bg);color:var(--teal-text)">00</span>Vendor evaluation — outcome</div>
+  <div class="s-sub">Three vendors assessed against KPay's P1–P4 use cases. Amplitude recommended. Mixpanel formally ruled out. SensorData replacement under review.</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px">
+    <!-- Amplitude -->
+    <div style="border:1.5px solid var(--teal);border-radius:10px;padding:14px 16px;background:var(--teal-bg)">
+      <span style="display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;background:var(--teal-bg);color:var(--teal-text);border:1px solid var(--teal);margin-bottom:8px">✅ RECOMMENDED</span>
+      <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px">Amplitude — Growth Plan</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:10px">CDP profile layer, account-level identity, real-time paid media activation, AI/ML native. Growth plan covers P1–P4 DG use cases. 2-week trial available before contract.</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.8">
+        <span style="color:var(--teal-text)">✓</span> CDP profile + identity resolution<br>
+        <span style="color:var(--teal-text)">✓</span> Lookalike audiences → Meta/Google<br>
+        <span style="color:var(--teal-text)">✓</span> B2B account-level (SID) hierarchy<br>
+        <span style="color:var(--teal-text)">✓</span> Govern — schema enforcement<br>
+        <span style="color:var(--teal-text)">✓</span> Redshift connector + reverse ETL<br>
+        <span style="color:var(--teal-text)">✓</span> AI/ML — Growth plan sufficient P1–P2
+      </div>
+      <div style="margin-top:10px;padding:8px 10px;background:var(--bg);border-radius:6px;font-size:11px;color:var(--teal-text)"><strong>Score: 81/100</strong> · ~US$60–80K/yr · 3-year term · Enterprise (~2×) deferred to Phase 3 exit review</div>
+    </div>
+
+    <!-- Mixpanel -->
+    <div style="border:1.5px solid var(--red);border-radius:10px;padding:14px 16px;background:var(--red-bg)">
+      <span style="display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;background:var(--red-bg);color:var(--red-text);border:1px solid var(--red);margin-bottom:8px">❌ RULED OUT</span>
+      <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px">Mixpanel</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:8px">Strong product analytics tool — but not a CDP. Cannot activate paid media audiences, cannot handle KPay's B2B2C identity model, blocks Ayden cold-start GTM.</div>
+      <table style="width:100%;border-collapse:collapse;font-size:11px">
+        <tr style="border-top:1px solid var(--border)"><td style="padding:4px 0;color:var(--text2)">Lookalike audience → Meta/Google</td><td style="color:var(--red-text);font-weight:600;text-align:right">✗ Cannot</td></tr>
+        <tr style="border-top:1px solid var(--border)"><td style="padding:4px 0;color:var(--text2)">CDP profile / identity resolution</td><td style="color:var(--red-text);font-weight:600;text-align:right">✗ Cannot</td></tr>
+        <tr style="border-top:1px solid var(--border)"><td style="padding:4px 0;color:var(--text2)">B2B2C account-level (SID) hierarchy</td><td style="color:var(--red-text);font-weight:600;text-align:right">✗ Cannot</td></tr>
+        <tr style="border-top:1px solid var(--border)"><td style="padding:4px 0;color:var(--text2)">Real-time audience sync to paid media</td><td style="color:var(--red-text);font-weight:600;text-align:right">✗ Cannot</td></tr>
+        <tr style="border-top:1px solid var(--border)"><td style="padding:4px 0;color:var(--text2)">Ayden cold-start GTM (Q3 2026)</td><td style="color:var(--red-text);font-weight:600;text-align:right">✗ Blocked</td></tr>
+        <tr style="border-top:1px solid var(--border)"><td style="padding:4px 0;color:var(--text2)">Funnel / cohort analytics</td><td style="color:var(--teal-text);font-weight:600;text-align:right">✓ Strong</td></tr>
+      </table>
+      <div style="margin-top:8px;font-size:11px;color:var(--red-text)">~$20–30K/yr cheaper — but capability gap is larger than the price difference. Evaluation session recorded as evidence for Martin.</div>
+    </div>
+
+    <!-- SensorData -->
+    <div style="border:1.5px solid var(--amber);border-radius:10px;padding:14px 16px;background:var(--amber-bg)">
+      <span style="display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;background:var(--amber-bg);color:var(--amber-text);border:1px solid var(--amber);margin-bottom:8px">🟡 UNDER REVIEW</span>
+      <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px">SensorData</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:8px">Amplitude can replace SensorData as behavioral analytics + event SDK layer. Cost consolidation opportunity — but compliance and data forwarding check required first.</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.8">
+        · Chinese UI blocks DG self-serve<br>
+        · v1/v2 schema conflict — tech debt from Day 1<br>
+        · No outlet-level identifier (SID gap)<br>
+        · Amplitude SDK covers same collection surface<br>
+        · Replacement = cost savings + schema clean slate
+      </div>
+      <div style="margin-top:10px;padding:8px 10px;background:var(--bg);border-radius:6px;font-size:11px;color:var(--amber-text)"><strong>Decision deferred.</strong> Compliance + data forwarding check in progress. Separate recommendation before contract signing.</div>
+    </div>
+  </div>
+
+  <!-- OneID Gate -->
+  <div style="background:var(--red-bg);border:2px solid var(--red);border-radius:10px;padding:16px 20px;display:flex;align-items:flex-start;gap:14px">
+    <div style="font-size:28px;flex-shrink:0">⛔</div>
+    <div style="width:100%">
+      <div style="font-size:14px;font-weight:700;color:var(--red-text);margin-bottom:8px">HARD GATE — Merchant OneID (Target: August 27, 2026)</div>
+      <div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:6px">What we cannot do properly without OneID:</div>
+      <ul style="font-size:12px;color:var(--text2);line-height:1.8;padding-left:16px;margin-bottom:10px">
+        <li><strong>Unified merchant profile</strong> — cannot resolve a single merchant across web, portal, app, and CRM. Same merchant appears as multiple disconnected records.</li>
+        <li><strong>Multi-outlet identity</strong> — cannot link a merchant entity to its outlets (SID). One merchant with 3 outlets = 3 unrelated profiles. Segmentation and attribution break.</li>
+        <li><strong>ICP scoring accuracy</strong> — ICP model inputs will be partial. Lookalike audiences built on incomplete profiles produce lower quality matches.</li>
+        <li><strong>Attribution fidelity</strong> — campaign → MQL → SQL → activation chain cannot be reliably stitched without a canonical merchant ID as the spine.</li>
+        <li><strong>Lifecycle trigger reliability</strong> — onboarding and re-engagement sequences may fire against incomplete or duplicate profiles.</li>
+      </ul>
+      <div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:6px">What we CAN do before OneID is live:</div>
+      <ul style="font-size:12px;color:var(--text2);line-height:1.8;padding-left:16px;margin-bottom:10px">
+        <li>Event taxonomy locked and schema enforced via Amplitude Govern</li>
+        <li>Compliance review completed (Rex + Benjamin + Jonas)</li>
+        <li>Data model designed with SID as canonical key — ready to activate once OneID delivers</li>
+        <li>Platform trial run — familiarisation with capabilities, sample data</li>
+        <li>Basic funnel analytics and session-level tracking live (user-level only, not merchant-level)</li>
+      </ul>
+      <div style="background:var(--bg);border-radius:6px;padding:10px 12px;font-size:11px;color:var(--red-text);line-height:1.6">
+        <strong>Escalation to Martin (COO):</strong> Confirm Aug 27 is a committed delivery date — not aspirational. If it slips, all Phase 1 use cases listed above are degraded until it lands. The programme can proceed in parallel, but the team and stakeholders must understand the trade-off explicitly.<br><br><strong>Recommended framing to Martin:</strong> do not ask for confirmation of the full OneID build by Aug 27 — instead, identify the <strong>~10% of OneID scope the Phase 1 pilot needs</strong> (merchant entity + outlet SID linkage for HK), and ask Martin to pressure Benjamin to prioritise that subset first. Smaller ask, harder to defer, more likely to unlock Phase 1 on schedule.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: THE PROBLEM -->
+<div class="section">
+  <div class="s-title"><span class="s-num">01</span>The problem we're solving</div>
+  <div class="s-sub">Digital Growth cannot answer four basic questions today. Every acquisition and lifecycle decision depends on them.</div>
+  <div class="problem-grid">
+    <div class="prob-card">
+      <span class="q-num">Q1</span>
+      <div class="q-title">Which merchants are worth acquiring?</div>
+      <div class="q-state">No unified merchant identity across web, app, CRM, and payments. The same merchant appears as multiple disconnected records.</div>
+      <div class="q-cost"><b>Cost:</b> Acquisition decisions on intuition · ICP targeting impossible · ad spend wasted on merchants who never activate.</div>
+    </div>
+    <div class="prob-card">
+      <span class="q-num">Q2</span>
+      <div class="q-title">What does it cost to acquire them?</div>
+      <div class="q-state">Attribution stops at form submission. KYB, activation, and first-transaction data are permanently invisible to Digital Growth.</div>
+      <div class="q-cost"><b>Cost:</b> CAC Payback cannot be measured · marketing optimises for lead volume, not merchant quality · Ayden launches with zero attribution.</div>
+    </div>
+    <div class="prob-card">
+      <span class="q-num">Q3</span>
+      <div class="q-title">Is lifecycle spend working?</div>
+      <div class="q-state">HubSpot is email-only — no push, no in-app, no WhatsApp. Portal and app interactions invisible to marketing. Churn intervention is reactive.</div>
+      <div class="q-cost"><b>Cost:</b> Retention interventions arrive too late · multi-channel lifecycle structurally impossible · re-engagement is guesswork.</div>
+    </div>
+    <div class="prob-card">
+      <span class="q-num">Q4</span>
+      <div class="q-title">How fast can marketing actually move?</div>
+      <div class="q-state">Every audience segment requires a Data team ticket. Turnaround &gt;5 days, often 1–2 sprints. 40–75 hrs/week lost to manual reconciliation.</div>
+      <div class="q-cost"><b>Cost:</b> Slower to market than competitors · rapid-response campaigns impossible · execution speed capped by engineering availability.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: RECOMMENDED STACK -->
+<div class="section">
+  <div class="s-title"><span class="s-num">02</span>Recommended stack — CDP + CEP</div>
+  <div class="s-sub">Two tools that close the loop from campaign spend to GPV impact. CDP decides <i>who</i> to target. CEP decides <i>when, on which channel, with what content</i>.</div>
+  <div class="stack-grid">
+    <div class="stack-card cdp">
+      <div class="layer-tag">Intelligence layer</div>
+      <div class="layer-name">Customer Data Platform (CDP)</div>
+      <ul>
+        <li><b>Identity resolution</b> — unified merchant ID across web, app, CRM, payments</li>
+        <li><b>AI audience segmentation</b> — ICP-filtered cohorts, predictive churn, LTV scoring</li>
+        <li><b>Multi-touch attribution</b> — campaign source through first transaction</li>
+        <li><b>Ask CDP</b> — natural-language campaign analysis, no SQL required</li>
+        <li><b>Experiment</b> — A/B testing on audiences and onboarding flows</li>
+        <li><b>Govern</b> — schema enforcement, RBAC, PII masking, consent</li>
+        <li><b>Warehouse-native</b> — bidirectional sync with Redshift</li>
+      </ul>
+    </div>
+    <div class="stack-card cep">
+      <div class="layer-tag">Activation layer</div>
+      <div class="layer-name">Customer Engagement Platform (CEP)</div>
+      <ul>
+        <li><b>Push notifications</b> — merchant app (iOS + Android)</li>
+        <li><b>In-app messaging</b> — merchant portal behavioural triggers</li>
+        <li><b>Email</b> — lifecycle journeys replacing HubSpot Marketing Hub</li>
+        <li><b>WhatsApp</b> — HK CS pilot + merchant activation nudges</li>
+        <li><b>SMS</b> — onboarding sequences and alerts</li>
+        <li><b>Sherpa AI</b> — send-time, channel, content optimisation per merchant</li>
+        <li><b>Flows</b> — visual journey builder, marketer self-serve</li>
+      </ul>
+    </div>
+  </div>
+  <div class="flow-note"><b>Native CDP → CEP connector.</b> Real-time segment sync. Campaign results flow back into CDP for measurement. No custom middleware. Every campaign decision is measurable end-to-end.</div>
+</div>
+
+<!-- SECTION 3: COMMERCIAL OUTCOMES -->
+<div class="section">
+  <div class="s-title"><span class="s-num">03</span>Commercial outcomes unlocked</div>
+  <div class="s-sub">Every capability ladders up to one North Star. Supporting metrics in the table are the levers that move it. Proof points anchored to comparable fintech deployments.</div>
+
+  <!-- NSM Framework block -->
+  <div class="nsm-block">
+    <div class="nsm-row">
+      <div class="nsm-card nsm-north">
+        <div class="nsm-tag">North Star</div>
+        <div class="nsm-metric">CAC Payback Period <span class="nsm-unit">(months, by channel)</span></div>
+        <div class="nsm-desc">The one number that converts acquisition cost and merchant GPV into a single budget allocation decision. Requires P1 metrics to be live before it's calculable.<br><br><b>Phase 0/1 POC proof point (P0):</b> Both P0 metrics measurable within the 12-week window — Merchant activation rate by channel + MQL→SQL conversion rate by channel. These don't require full attribution coverage to be reliable.</div>
+      </div>
+    </div>
+    <div class="nsm-grid">
+      <div class="nsm-card nsm-supp">
+        <div class="nsm-tag">Supporting metrics — 11 metrics across 4 phases</div>
+        <div style="font-size:10px;font-weight:600;color:var(--red-text);text-transform:uppercase;letter-spacing:0.4px;margin:6px 0 4px">P0 — POC focus (Phase 0/1)</div>
+        <ul>
+          <li><b class="p0-tag">P0</b> <b>Merchant activation rate by acquisition channel</b> — % completing first transaction within 60 days of signing (Lagging)</li>
+          <li><b class="p0-tag">P0</b> <b>MQL → SQL conversion rate by channel</b> — lead quality signal available within days, not 6 weeks (Leading)</li>
+        </ul>
+        <div style="font-size:10px;font-weight:600;color:var(--amber-text);text-transform:uppercase;letter-spacing:0.4px;margin:8px 0 4px">P1 — Phase 1 (post-POC)</div>
+        <ul>
+          <li><b class="p1-tag">P1</b> <b>% HK DMO leads with traceable end-to-end attribution</b> — campaign → MQL → SQL → onboarding → KYB → activation (Lagging)</li>
+          <li><b class="p1-tag">P1</b> <b>ICP match rate at lead capture</b> — % new leads scoring above ICP threshold at point of entry (Leading)</li>
+          <li><b class="p1-tag">P1</b> <b>GPV per activated merchant by acquisition cohort</b> — avg gross payment volume at 30/60/90 days post-activation, by channel (Lagging)</li>
+          <li><b class="p1-tag">P1</b> <b>CAC payback period by channel</b> — months for a cohort to repay acquisition cost at observed GPV run rate (Lagging)</li>
+        </ul>
+        <div style="font-size:10px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.4px;margin:8px 0 4px">P2 — Phase 2</div>
+        <ul>
+          <li><b class="p2-tag">P2</b> <b>DMO stage completion rate + drop-off point</b> — real-time friction identification across onboarding stages (Leading)</li>
+          <li><b class="p2-tag">P2</b> <b>Merchant signings by source</b> — DMO / lead gen / BD-influenced / referral (Lagging)</li>
+          <li><b class="p2-tag">P2</b> <b>Time-to-first-transaction</b> — days from signing to first completed payment (Leading)</li>
+        </ul>
+        <div style="font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.4px;margin:8px 0 4px">P3 — Phase 3</div>
+        <ul>
+          <li><b class="p2-tag">P3</b> <b>Marketing-influenced vs. pure-sales signings</b> — Digital Growth's contribution vs BD-originated deals (Lagging)</li>
+          <li><b class="p2-tag">P3</b> <b>Campaign-to-activation reporting latency</b> — target: reduce from 1+ month to &lt;7 days (Operational)</li>
+        </ul>
+      </div>
+      <div class="nsm-card nsm-guard">
+        <div class="nsm-tag">Guardrails / Counter</div>
+        <ul>
+          <li><b>Data quality</b> — schema enforcement, &lt;5% null on identity fields</li>
+        <li><b>Compliance review</b> — security checklist sent to Rex (SG/PDPA) + Benjamin (security). HK PDPO owner TBC.</li>
+          <li><b>Cost per MAU</b> — negotiated cap, escalation alert at 80%</li>
+          <li><b>Lifecycle suppression</b> — no merchant receives &gt;3 nudges/week</li>
+        </ul>
+      </div>
+      <div class="nsm-card nsm-trade">
+        <div class="nsm-tag">Explicit trade-offs</div>
+        <ul>
+          <li>Not optimising for <b>raw lead volume</b> — quality over quantity</li>
+          <li>Accepting <b>vendor lock-in</b> to ship in 12 weeks vs 12 months</li>
+          <li>Deferring <b>full multi-touch algorithmic attribution</b> to Phase 3</li>
+          <li>Phase 1 scope = HK only; SG/AU/JP follow as data is ready</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <table class="outcomes-table">
+    <thead>
+      <tr><th>Outcome</th><th>How CDP + CEP delivers it</th><th>Supporting metric</th><th>Fintech proof point</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="outcome-name">Lower CAC</td>
+        <td>CDP ICP-filtered audiences sync to Meta/Google. Spend only against merchants matching high-LTV profile. Attribution closes loop campaign → first transaction.</td>
+        <td class="metric">
+          <span class="metric-pill">Merchant activation rate by channel</span><span class="pri-p0">P0</span><br>
+          <span class="metric-pill metric-pill-stack">MQL → SQL conversion rate by channel</span><span class="pri-p0">P0</span><br>
+          <span class="metric-pill metric-pill-stack">CAC payback period by channel</span><span class="pri-p1">P1</span>
+        </td>
+        <td class="proof"><b>Allergan</b> (B2B2C via Segment): 41% CPA reduction. <b>Domino's:</b> 65% CPA decrease, 700% ROAS lift.</td>
+      </tr>
+      <tr>
+        <td class="outcome-name">Faster activation</td>
+        <td>CEP behavioural triggers fire on DMO drop-off. Push or WhatsApp nudge reaches merchant within minutes. CDP measures time-to-first-transaction per cohort.</td>
+        <td class="metric">
+          <span class="metric-pill">DMO stage completion + drop-off</span><span class="pri-p2">P2</span><br>
+          <span class="metric-pill metric-pill-stack">Time-to-first-transaction</span><span class="pri-p2">P2</span>
+        </td>
+        <td class="proof"><b>Salt Bank:</b> 80% activation boost on identical account-open → first-transaction gap. <b>Jupiter Money:</b> 80% reduction in KYC step time.</td>
+      </tr>
+      <tr>
+        <td class="outcome-name">Higher merchant LTV</td>
+        <td>CDP Predictive Cohorts flag at-risk merchants 30 days before churn. CEP re-engagement sequence fires automatically. CDP measures retention lift + GPV sustained per cohort.</td>
+        <td class="metric">
+          <span class="metric-pill">GPV per activated merchant by cohort</span><span class="pri-p1">P1</span><br>
+          <span class="metric-pill-muted">Retention rate — Phase 2, pending Finance methodology</span>
+        </td>
+        <td class="proof"><b>Scripbox</b> (financial services): +246% first-time investments, +22% revenue from new users, –20% marketing cost.</td>
+      </tr>
+      <tr>
+        <td class="outcome-name">Multi-product revenue</td>
+        <td>CDP propensity model (pay-in + high GPV + tenure &gt;6mo) → CEP cross-sell trigger to next-best KPay product → CDP measures campaign-to-adoption rate.</td>
+        <td class="metric">
+          <span class="metric-pill-muted">Phase 2 — metric TBD</span><br>
+          <span style="font-size:10.5px;color:var(--text3);display:block;margin-top:4px">Cross-sell adoption rate — not yet in current measurement framework</span>
+        </td>
+        <td class="proof"><b>Ramp Network:</b> 30%+ improvement in transaction volume and conversion using the same full-stack architecture.</td>
+      </tr>
+      <tr>
+        <td class="outcome-name">Ayden Q3 2026 launch</td>
+        <td>CDP audiences synced to Meta, Google, UK ad platforms from Day 1. Attribution instrumented before first merchant signs. CEP lifecycle automation active at launch.</td>
+        <td class="metric">
+          <span class="metric-pill">% HK DMO leads with traceable E2E attribution</span><span class="pri-p1">P1</span><br>
+          <span class="metric-pill metric-pill-stack">ICP match rate at lead capture</span><span class="pri-p1">P1</span>
+        </td>
+        <td class="proof"><b>No dark funnel.</b> Every UK/CA/EU acquisition cost measurable from the start — unlike HK/SG where attribution was built after the fact.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 4: BUILD vs BUY -->
+<div class="section">
+  <div class="s-title"><span class="s-num">04</span>Build vs Buy — the decision</div>
+  <div class="s-sub">Two paths assessed before recommending packaged. Amplitude selected. Sequencing: compliance + taxonomy (June) → OneID confirmed + contract signed (end July) → POC kickoff (August) → Phase 1 live (Sep–Oct).</div>
+
+  <div class="sprint-callout"><b>⏱ Sequencing update (post May 19 Patrick alignment):</b> Phase 0 work (taxonomy, compliance, data model) starts now and runs through June — does not wait for OneID. Contract target: end of July. 2-week platform trial runs in parallel. Phase 1 kickoff: August. OneID Aug 27 is a use-case quality gate — without it, merchant identity and attribution fidelity are degraded. Programme proceeds in parallel with explicit trade-off acknowledged. &nbsp; Reading the table: <span style="color:var(--blue-text);font-weight:600">🔵 Buy = capability delivered</span> · <span style="color:var(--red-text);font-weight:600">🔴 Build = in progress, nothing shipped</span></div>
+
+  <table class="sprint-table">
+    <thead>
+      <tr>
+        <th>Sprint</th>
+        <th>Wks</th>
+        <th class="buy-col">🔵 Buy — CDP + CEP (delivered)</th>
+        <th class="build-col">🔴 Build — Custom on Redshift</th>
+        <th class="gate-col">Gate / SLA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="sprint-cell">S1</td>
+        <td class="wk-cell">W1–2</td>
+        <td class="buy-cell win">
+          <ul class="cell-bullets">
+            <li><b>Now–June:</b> Compliance review (Rex + Benjamin), event taxonomy locked, data model designed</li>
+            <li><b>July:</b> OneID commitment confirmed → 2-week platform trial → contract signed</li>
+            <li><b>August:</b> Formal kickoff — data team + product + compliance capacity committed</li>
+            <li>MerchantOneID API + web events flowing into CDP</li>
+          </ul>
+          <span class="outcome win">✓ First data source connected — Aug SLA</span>
+        </td>
+        <td class="build-cell fail">
+          <ul class="cell-bullets">
+            <li>Requirements-gathering sessions</li>
+            <li>Architecture design draft</li>
+            <li>Engineering resourcing discussed</li>
+          </ul>
+          <span class="outcome fail">✗ No output · Design doc drafted only</span>
+        </td>
+        <td class="gate-cell gate">
+          <span class="blocker">⛔ OneID quality gate</span>
+          <ul class="gate-bullets"><li>Without OneID: basic analytics live, but merchant identity + attribution fidelity degraded</li><li>Aug 27 = target for full-quality Phase 1 use cases</li><li>🔵 2-wk first-source SLA starts post-kickoff</li></ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">S2</td>
+        <td class="wk-cell">W3–4</td>
+        <td class="buy-cell">
+          <ul class="cell-bullets">
+            <li>Event taxonomy locked via CDP Govern (platform-enforced, not manual)</li>
+            <li>Merchant identity stitching begins via CDP Account Lookup</li>
+            <li>HK/SG compliance engagement starts (PDPA/SG · HK PDPO owner TBC)</li>
+            <li>HubSpot + CRM connected</li>
+          </ul>
+        </td>
+        <td class="build-cell fail">
+          <ul class="cell-bullets">
+            <li>Schema workshops across 3+ teams</li>
+            <li>Naming conventions documented manually</li>
+            <li>SensorData schema audit begun</li>
+            <li>No integration work started</li>
+          </ul>
+          <span class="outcome fail">✗ No capability delivered</span>
+        </td>
+        <td class="gate-cell">
+          <ul class="gate-bullets">
+            <li>🔴 Build schema doc in progress</li>
+            <li>Schema must lock before any API integration</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">S3</td>
+        <td class="wk-cell">W5–6</td>
+        <td class="buy-cell win">
+          <ul class="cell-bullets">
+            <li>First merchant audience built on unified CDP profile</li>
+            <li>First merchant onboarding journey live in CEP (email + push)</li>
+            <li>Marketer can self-serve segments — no engineering ticket</li>
+          </ul>
+          <span class="outcome win">✓ First audience live · CEP journeys live</span>
+        </td>
+        <td class="build-cell fail">
+          <ul class="cell-bullets">
+            <li>Schema documentation finalised</li>
+            <li>Stakeholder sign-off obtained</li>
+            <li>First API integration scoped (CRM → Redshift)</li>
+          </ul>
+          <span class="outcome fail">✗ Build has docs · Buy has live journeys</span>
+        </td>
+        <td class="gate-cell gate">
+          <span class="milestone">🔵 6-wk first-audience SLA hit</span>
+          <ul class="gate-bullets"><li>🔴 Build has not written a single line of integration code</li></ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">S4</td>
+        <td class="wk-cell">W7–8</td>
+        <td class="buy-cell">
+          <ul class="cell-bullets">
+            <li>ICP-filtered seed audience synced to Meta + Google Ads</li>
+            <li>WhatsApp template approval submitted</li>
+            <li>A/B test framework active — first onboarding variants running</li>
+          </ul>
+          <span class="outcome win">✓ Meta/Google ad sync live</span>
+        </td>
+        <td class="build-cell fail">
+          <ul class="cell-bullets">
+            <li>First API integration in progress: CRM → Redshift</li>
+            <li>Second integration scoped (MerchantOneID)</li>
+          </ul>
+          <span class="outcome fail">✗ 1 of ~6 integrations in progress</span>
+        </td>
+        <td class="gate-cell">
+          <ul class="gate-bullets">
+            <li>🔴 S4 = first sprint Build writes integration code</li>
+            <li>Each integration needs full QA before next begins</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">S5</td>
+        <td class="wk-cell">W9–10</td>
+        <td class="buy-cell win">
+          <ul class="cell-bullets">
+            <li class="star">FIRST NSM MILESTONE</li>
+            <li>WhatsApp activation nudge live (HK CS pilot)</li>
+            <li>KPOS + KConnect events flowing into CDP</li>
+            <li>First-touch attribution dashboard live</li>
+            <li>First CAC-by-channel data point</li>
+          </ul>
+          <span class="outcome win">✓ CAC by channel measurable</span>
+        </td>
+        <td class="build-cell fail">
+          <ul class="cell-bullets">
+            <li>First integration complete (CRM → Redshift)</li>
+            <li>Second integration started</li>
+            <li>Identity-model architecture design begins</li>
+          </ul>
+          <span class="outcome fail">✗ 1 of ~6 done · Identity model not started</span>
+        </td>
+        <td class="gate-cell gate">
+          <span class="milestone">🔵 First NSM milestone (Volume layer)</span>
+          <ul class="gate-bullets"><li>🔴 Build identity model blocked until all integrations stable + QA'd</li></ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">S6</td>
+        <td class="wk-cell">W11–12</td>
+        <td class="buy-cell win">
+          <ul class="cell-bullets">
+            <li>All core sources connected (KPOS, KConnect, MerchantOneID, CRM, HubSpot)</li>
+            <li>Last-touch attribution model live</li>
+            <li>Paid media audience optimisation in flight</li>
+            <li>HubSpot Marketing Hub displacement begins</li>
+          </ul>
+          <span class="outcome win">✓ Full CDP deployed</span>
+        </td>
+        <td class="build-cell fail">
+          <ul class="cell-bullets">
+            <li>Second integration complete</li>
+            <li>Third integration started</li>
+            <li>Identity-model schema design ongoing (not built)</li>
+          </ul>
+          <span class="outcome fail">✗ 2 of 6 integrations done · Marketing has zero self-serve</span>
+        </td>
+        <td class="gate-cell gate">
+          <span class="milestone">🔵 12-wk full-deploy SLA hit</span>
+          <ul class="gate-bullets"><li>🔴 Build is ~10 weeks behind equivalent Buy milestone</li></ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">S7–8</td>
+        <td class="wk-cell">W13–16</td>
+        <td class="buy-cell win">
+          <ul class="cell-bullets">
+            <li>CDP Predictive Cohorts trained on merchant data</li>
+            <li>At-risk merchants flagged 30 days before churn — no DS team needed</li>
+            <li>GPV + LTV enrichment models pushed from Redshift into CDP profiles</li>
+            <li>Churn re-engagement sequences live in CEP</li>
+          </ul>
+        </td>
+        <td class="build-cell fail">
+          <ul class="cell-bullets">
+            <li>Identity model being built in Redshift (2 engineers, full focus)</li>
+            <li>Integrations 3 + 4 completing</li>
+            <li>Segmentation logic design begins</li>
+          </ul>
+          <span class="outcome fail">✗ Attribution pipeline not started · Marketing cannot self-serve</span>
+        </td>
+        <td class="gate-cell">
+          <ul class="gate-bullets">
+            <li><span class="blocker">🔴 Data team fully consumed by identity model</span></li>
+            <li>No capacity for attribution or segmentation work</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">S9–10</td>
+        <td class="wk-cell">W17–20</td>
+        <td class="buy-cell win">
+          <ul class="cell-bullets">
+            <li class="star">NORTH STAR LIVE</li>
+            <li>Full lifecycle automation across HK, SG, AU, JP</li>
+            <li>Expansion-market audiences ready for Q3 2026 (Ayden)</li>
+            <li>CAC Payback measurable</li>
+            <li>Campaign spend optimised by lift evidence</li>
+          </ul>
+        </td>
+        <td class="build-cell fail">
+          <ul class="cell-bullets">
+            <li>Identity model complete — QA underway</li>
+            <li>Attribution pipeline just starting</li>
+            <li>Basic attribution signal expected ~M7</li>
+          </ul>
+          <span class="outcome fail">✗ Build just achieved what Buy delivered in Sprint 5</span>
+        </td>
+        <td class="gate-cell gate">
+          <span class="milestone">🔵 NSM (CAC Payback) live · ready to scale</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">S11+</td>
+        <td class="wk-cell">M6+</td>
+        <td class="buy-cell win">
+          <ul class="cell-bullets">
+            <li>Phase 3 intelligence running — predictive churn + LTV + ICP scoring at scale</li>
+            <li>All 4 markets on shared data model</li>
+            <li>Multi-touch attribution fully algorithmic</li>
+            <li>Cost curve flat at ~USD $100K cumulative @ M15</li>
+          </ul>
+        </td>
+        <td class="build-cell fail">
+          <ul class="cell-bullets">
+            <li>Segmentation layer being built on now-stable identity</li>
+            <li>Attribution model design + build (separate project)</li>
+            <li>QA across all systems</li>
+          </ul>
+          <span class="outcome fail">✗ First full use case live ~M9–12 (HK only) · Cost curve ~$290K @ M15</span>
+        </td>
+        <td class="gate-cell gate">
+          <span class="milestone">🔵 Buy running Phase 3 intelligence</span>
+          <ul class="gate-bullets"><li>🔴 Build just shipped first use case · Gap = ~$155K + 6–8mo</li></ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="verdict-block">
+    <div class="verdict-card buy">
+      <div class="v-h">✅ Buy — recommended</div>
+      <ul>
+        <li><b>Speed:</b> first audience live in 6 weeks · CAC by channel measurable at week 10</li>
+        <li><b>Self-service:</b> marketer designs segments and journeys without engineering tickets</li>
+        <li><b>AI from Day 1:</b> Predictive Cohorts, send-time AI, Ask CDP — no DS build required</li>
+        <li><b>Engineering opportunity cost is minimal</b> (0.25–0.5 FTE for enrichment models only)</li>
+        <li><b>Within Martin's 12-week SLA</b> for first commercial outcome</li>
+      </ul>
+    </div>
+    <div class="verdict-card build">
+      <div class="v-h">❌ Build — rejected</div>
+      <ul>
+        <li><b>Too slow:</b> first HK use case ~M9–12, full deployment beyond M15</li>
+        <li><b>Too engineering-heavy:</b> 2–3 senior engineers × 7–9 months blocked from payments product</li>
+        <li><b>Puts Ayden Q3 2026 launch at risk</b> — no attribution coverage at whitelabel launch</li>
+        <li><b>Marketing remains SQL-dependent</b> — every segment is an engineering ticket</li>
+        <li><b>~$155K + 6–8 month gap</b> vs the packaged path, growing over time</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: IMPLEMENTATION ROADMAP -->
+<div class="section">
+  <div class="s-title"><span class="s-num">05</span>Implementation roadmap — phased approach</div>
+  <div class="s-sub">Each phase progressively unlocks value, starting with data integrity and moving toward advanced intelligence and regional scale. Tightly aligned with DMO (Digital Merchant Onboarding).</div>
+  <div class="principle"><b>Principle:</b> Foundation → Attribution → Activation → Intelligence → Scale</div>
+  <div class="phase-chevrons">
+    <div class="phase-chev p0">
+      <div class="ph-num">Phase 0</div>
+      <div class="ph-title">Foundation (Pre-POC)</div>
+      <div class="ph-when">Jun – Jul 2026</div>
+      <div class="ph-desc">Fix data, compliance, and identity before any CDP is touched.</div>
+    </div>
+    <div class="phase-chev p1">
+      <div class="ph-num">Phase 1</div>
+      <div class="ph-title">HK Pilot (POC)</div>
+      <div class="ph-when">Jul – Aug 2026</div>
+      <div class="ph-desc">End-to-end attribution and tracking visibility in HK.</div>
+    </div>
+    <div class="phase-chev p2">
+      <div class="ph-num">Phase 2</div>
+      <div class="ph-title">Activation & Automation</div>
+      <div class="ph-when">Sep – Nov 2026</div>
+      <div class="ph-desc">Turn data into growth actions across channels via cohort segmentation, targeting, multi-touch attribution.</div>
+    </div>
+    <div class="phase-chev p3">
+      <div class="ph-num">Phase 3</div>
+      <div class="ph-title">Intelligence Layer</div>
+      <div class="ph-when">Dec 2026 – Feb 2027</div>
+      <div class="ph-desc">Predictive models to optimise growth, prevent churn, and understand merchant behaviour.</div>
+    </div>
+    <div class="phase-chev p4">
+      <div class="ph-num">Phase 4</div>
+      <div class="ph-title">Multi-market Scale</div>
+      <div class="ph-when">Mar 2027 +</div>
+      <div class="ph-desc">Replicate solution and infrastructure to other markets including Ayden expansion.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: BUY PATH GANTT -->
+<div class="section">
+  <div class="s-title"><span class="s-num">06</span>Buy path — implementation Gantt</div>
+  <div class="s-sub">Month-by-month workstream schedule. Phase colours match the chevrons above. <b>GO / NO-GO gates</b> shown as decision points. MerchantOneID depends on Engineering Technical Roadmap 2026 IAM.</div>
+  <div class="gantt-wrap">
+    <table class="gantt-table">
+      <thead>
+        <tr>
+          <th class="ws-header">Workstream</th>
+          <th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th><th>Jan 27</th><th>Feb 27</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="phase-row p0"><td colspan="10">PHASE 0 · Foundation & Governance — May–July 2026 (pre-contract)</td></tr>
+        <tr>
+          <td class="ws">Event taxonomy audit + schema lock</td>
+          <td class="bar p0">●</td><td class="bar p0">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">Merchant OneID model design</td>
+          <td class="bar p0">●</td><td class="bar p0">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">CDP vendor setup</td>
+          <td class="bar p0">●</td><td class="bar p0">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">Compliance &amp; legal vendor approval<div class="ws-note">KPay compliance + legal team review of Amplitude DPA, data handling terms, and residency. Aligned with Amplitude team before contract.</div></td>
+          <td class="bar p0">●</td><td class="bar p0">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">CEP evaluation — Phase 2+ only (HubSpot stays as interim)<div class="ws-note">Gated on 5 conditions: HubSpot scale limits proven, deliverability risk structural, MoEngage economics better, CDP live, no overlap. MoEngage pricing confirmation pending.</div></td>
+          <td class="bar p0">●</td><td class="bar p0">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">E2E lifecycle attribution planning — 1 pilot use case</td>
+          <td class="bar p0">●</td><td class="bar p0">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">→ Phase 0 POC completion (CDP 1 pilot use case)</td>
+          <td></td><td class="bar gate">⚠ GO/NO-GO</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr style="background:var(--red-bg)">
+          <td class="ws" style="background:var(--red-bg);color:var(--red-text);font-size:11px"><strong>Phase 0 exit gate</strong><div class="ws-note" style="color:var(--red-text)">Must clear all before Phase 1 starts</div></td>
+          <td colspan="9" style="padding:8px 14px;font-size:11px;color:var(--red-text);vertical-align:top">
+            <ul style="list-style:none;padding:0;margin:0;line-height:2">
+              <li>⛔ Event taxonomy locked and published as governance contract — requires schema lock workshop with <strong>Teresa</strong> (DMO/KConnect/loyalty context) + <strong>Wendy</strong> (DMO tracking) + <strong>Rachel</strong> (HubSpot/CRM) before instrumentation begins</li>
+              <li>⛔ Merchant OneID model confirmed — Kai + Benjamin aligned on identity resolution design</li>
+              <li>⛔ Compliance review complete — KPay compliance + legal aligned with Amplitude team on data handling, DPA, and residency</li>
+              <li>⛔ Budget approved — Martin sign-off</li>
+              <li>⛔ Data team capacity committed — JieHuan ring-fenced for Phase 1 pipeline work</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr class="phase-row p1"><td colspan="10">PHASE 1 · CDP Analytics + Attribution</td></tr>
+        <tr>
+          <td class="ws">MerchantOneID API → CDP (server-side)<div class="ws-note">KYB + business identity. ~1–2 wks. Parallel.</div></td>
+          <td></td><td></td><td class="bar p1">● parallel instrumentation</td><td class="bar p1">●</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">KPOS (Hive terminals) → CDP (real-time)<div class="ws-note">Server-side API. Highest complexity. ~2–3 wks.</div></td>
+          <td></td><td></td><td class="bar p1">● parallel instrumentation</td><td class="bar qa">QA</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">KConnect → CDP (operational events)<div class="ws-note">Merchant, order, loyalty events. ~1–2 wks.</div></td>
+          <td></td><td></td><td class="bar p1">● parallel instrumentation</td><td class="bar p1">●</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">DMO lifecycle reporting / insight</td>
+          <td></td><td></td><td class="bar p1">●</td><td class="bar p1">●</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">HK CDP — Phase 1 implementation + merchant audience profile v1</td>
+          <td></td><td></td><td class="bar p1">●</td><td class="bar p1">●</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">→ Phase 1 GO / NO-GO</td>
+          <td></td><td></td><td></td><td class="bar gate">⚠ GO/NO-GO</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr style="background:var(--red-bg)">
+          <td class="ws" style="background:var(--red-bg);color:var(--red-text);font-size:11px"><strong>Phase 1 exit gate</strong><div class="ws-note" style="color:var(--red-text)">Must clear all before Phase 2 starts</div></td>
+          <td colspan="9" style="padding:8px 14px;font-size:11px;color:var(--red-text);vertical-align:top">
+            <ul style="list-style:none;padding:0;margin:0;line-height:2">
+              <li>⛔ Attribution coverage ≥ 80% of HK DMO leads traceable end-to-end</li>
+              <li>⛔ MAC (Merchant Acquisition Cost) readable by channel</li>
+              <li>⛔ Merchant OneID live — merchant profiles resolved to SID as primary node</li>
+              <li>⛔ DG team self-serves at least 1 audience without an engineering ticket</li>
+              <li>⛔ CEP evaluation started — 5 conditions assessed, proceed or stay on HubSpot decision documented</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr class="phase-row p2"><td colspan="10">PHASE 2 · CEP Activation + Lifecycle Automation — Q1 2027+ (gated on 5 CEP conditions)</td></tr>
+        <tr>
+          <td class="ws">CEP migration (HubSpot → CEP)<div class="ws-note">Only after 5 conditions met. HubSpot stays as interim activation layer until conditions confirmed.</div></td>
+          <td></td><td></td><td></td><td></td><td class="bar p2">●</td><td class="bar p2">●</td><td class="bar p2">●</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">Phase 2 — activation, lifecycle automation, multi-touch attribution</td>
+          <td></td><td></td><td></td><td></td><td class="bar p2">●</td><td class="bar p2">●</td><td class="bar p2">●</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">Channel integrations + ad sync</td>
+          <td></td><td></td><td></td><td></td><td class="bar p2">●</td><td class="bar p2">●</td><td class="bar p2">●</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">2–3 end-to-end lifecycle visibility use cases shipped</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td class="bar gate">⚠ GO/NO-GO</td><td></td><td></td>
+        </tr>
+        <tr style="background:var(--red-bg)">
+          <td class="ws" style="background:var(--red-bg);color:var(--red-text);font-size:11px"><strong>Phase 2 exit gate</strong><div class="ws-note" style="color:var(--red-text)">Must clear all before Phase 3 starts</div></td>
+          <td colspan="9" style="padding:8px 14px;font-size:11px;color:var(--red-text);vertical-align:top">
+            <ul style="list-style:none;padding:0;margin:0;line-height:2">
+              <li>⛔ Multi-channel lifecycle live — email + push + WhatsApp + in-app</li>
+              <li>⛔ CAC Payback methodology approved by Finance — BD commission in/out decision made</li>
+              <li>⛔ CEP confirmed (MoEngage) or HubSpot retained with documented scale plan</li>
+              <li>⛔ Amplitude Enterprise vs internal ML model — business case reviewed, decision made</li>
+              <li>⛔ Phase 1–2 ROI evidenced to Finance before Phase 3 scope is approved</li>
+              <li>⛔ Next market scope confirmed — market to be determined based on business priority</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr class="phase-row p3"><td colspan="10">PHASE 3 · Intelligence Layer — Predictive Models</td></tr>
+        <tr>
+          <td class="ws">Intelligence layer — churn, LTV, cLTV predictive models</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar p3">●</td><td class="bar p3">●</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="legend-row">
+    <span class="lg"><span class="sw" style="background:var(--green-bg);border:1px solid var(--green)"></span> Phase 0</span>
+    <span class="lg"><span class="sw" style="background:var(--blue-bg);border:1px solid var(--blue)"></span> Phase 1</span>
+    <span class="lg"><span class="sw" style="background:var(--amber-bg);border:1px solid var(--amber)"></span> Phase 2</span>
+    <span class="lg"><span class="sw" style="background:var(--purple-bg);border:1px solid var(--purple)"></span> Phase 3</span>
+    <span class="lg"><span class="sw" style="background:var(--coral-bg);border:1px solid var(--coral)"></span> GO/NO-GO gate</span>
+    <span class="lg"><span class="sw" style="background:var(--bg3);border:1px solid var(--text3)"></span> QA</span>
+  </div>
+</div>
+
+<!-- COLLAPSIBLE BUILD GANTT -->
+<details class="build-collapse">
+  <summary>
+    <span class="b-tag">REJECTED PATH</span>
+    Build path — phase-by-phase Gantt (click to expand)
+    <span class="b-meta">Custom build on AWS Redshift · 10 months to first HK use case</span>
+  </summary>
+  <div class="b-body">
+    <div class="b-intro">Raw operational data from CRM, OneID, KPOS, KConnect, and web events already flows into Redshift via Engineering pipelines (<b>IAM Sprint 20260331, completed Mar 2026</b>). Build path work is therefore: (1) schema mapping + ETL transformation per source, (2) UI design for merchant-facing surfaces, (3) identity model extension, (4) segmentation + QA, (5) attribution pipeline. <b>Each phase blocked by the previous.</b></div>
+
+    <div class="b-callout">
+      <b>Why Build effectively starts 2 months later than Buy:</b>
+      <ul>
+        <li>Engineering capacity does not free up until <b>end Aug 2026</b> (IAM Sprint 20260827 completes).</li>
+        <li>Pre-phase work (requirements, schema, interface design, compliance) consumes Jun–Aug.</li>
+        <li>API integration layer not required — saves ~6–8 weeks vs. greenfield builds, but Phase 1 transformations still need ring-fenced engineers.</li>
+      </ul>
+    </div>
+
+    <div class="gantt-wrap">
+      <table class="gantt-table">
+        <thead>
+          <tr>
+            <th class="ws-header">Workstream + dependency</th>
+            <th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th><th>Jan 27</th><th>Feb 27</th><th>Mar 27</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="phase-row pre"><td colspan="11">PRE-PHASE · Requirements + Schema + Interface Design + Compliance (Jun – Aug 2026)</td></tr>
+          <tr>
+            <td class="ws">Requirements & architecture design<div class="ws-note">Day 1. Outputs: system design, Redshift schema scope, transformation backlog. Runs concurrent with IAM sprints.</div></td>
+            <td class="bar pre">●</td><td class="bar pre">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">Engineering resourcing + capacity plan<div class="ws-note">2–3 senior engineers ring-fenced from payments product. Sprint planning agreed with JieHuan's team.</div></td>
+            <td class="bar pre">●</td><td class="bar pre">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">Interface design — Merchant Portal, KConnect, Merchant App <b style="color:var(--coral-text)">★ NEW</b><div class="ws-note">UX/UI for in-app messaging, comms triggers, dashboard hooks, app notification surfaces. ~4–6 wks design + sign-off.</div></td>
+            <td></td><td class="bar pre">Design</td><td class="bar pre">Sign-off</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">Event schema + taxonomy design<div class="ws-note">Map raw Redshift fields to martech event taxonomy per source. Manual sign-off across Martech, Data, Product. No enforcement mechanism.</div></td>
+            <td></td><td class="bar pre">Sign-off</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">Compliance review — PDPA (Rex)<div class="ws-note">Needs schema locked. Data models cannot be finalised until compliance clears. Required before any PII transformation.</div></td>
+            <td></td><td class="bar pre">●</td><td class="bar pre">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">⚠ GATE — Schema + interface design approved + IAM Sprint 20260630 settled<div class="ws-note">Nothing in Phase 1 starts until gate clears. Expected: end Aug 2026.</div></td>
+            <td></td><td></td><td class="bar gate-red">⚠ GATE</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr class="phase-row bp1"><td colspan="11">PHASE 1 · Data Transformation Layer — raw → martech-ready schema per source (Sep – Dec 2026)</td></tr>
+          <tr>
+            <td class="ws">Group 1A — CRM data → martech schema<div class="ws-note">Blocked until schema gate + Eng capacity. Field mapping: accounts, leads, MQL history, UTM capture. ~3 wks.</div></td>
+            <td></td><td></td><td></td><td class="bar bp1">Transform + QA</td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">Group 1B — MerchantOneID / KYB → martech schema<div class="ws-note">Parallel with 1A. Business identity, KYB status, registration fields. ~3 wks.</div></td>
+            <td></td><td></td><td></td><td class="bar bp1">Transform + QA</td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">Group 2A — KPOS (Hive) events → martech taxonomy<div class="ws-note">Blocked until Group 1 QA passes. Highest field-mapping complexity. Volume + latency validation. ~3–4 wks.</div></td>
+            <td></td><td></td><td></td><td></td><td class="bar bp1">Transform</td><td class="bar qa-red">QA</td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">Group 2B — KConnect operational data → martech schema<div class="ws-note">Parallel with 2A. SaaS/POS hub: members, orders, loyalty events. ~2–3 wks.</div></td>
+            <td></td><td></td><td></td><td></td><td class="bar bp1">Transform + QA</td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">Group 3A — Web events (GTM) → martech taxonomy<div class="ws-note">Blocked until Group 2 in progress (can overlap final wk). Schema must match locked taxonomy exactly. ~2–3 wks.</div></td>
+            <td></td><td></td><td></td><td></td><td></td><td class="bar bp1">Transform + QA</td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">Group 3B — HubSpot engagement → martech schema<div class="ws-note">Parallel with 3A. Email, form, workflow event history. ~2 wks.</div></td>
+            <td></td><td></td><td></td><td></td><td></td><td class="bar bp1">Transform + QA</td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">Cross-source data quality + schema consistency validation<div class="ws-note">All 6 sources transformed. Validate joins, naming consistency, null handling, dedup. ~2–3 wks.</div></td>
+            <td></td><td></td><td></td><td></td><td></td><td class="bar bp1">Validation</td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <tr class="phase-row bp2"><td colspan="11">PHASE 2 · Merchant OneID Extension — builds on IAM Sprint 20260331 (Nov – Dec 2026)</td></tr>
+          <tr>
+            <td class="ws">Merchant OneID B2B2C extension build (Redshift)<div class="ws-note">Blocked until Group 1 stable (early Nov). Adds B2B2C hierarchy: merchant entity → outlet → user login → terminal. ~3–4 wks.</div></td>
+            <td></td><td></td><td></td><td></td><td></td><td class="bar bp2">B2B2C extension</td><td class="bar bp2">●</td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">Merchant OneID QA + edge case validation<div class="ws-note">B2B2C edge cases (multi-outlet, shared terminals, shareholder PII) surface only in QA. Any join bug = full QA restart. ~2 wks.</div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td class="bar qa-red">QA + validation</td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">⚠ GATE — Merchant OneID stable + QA passed<div class="ws-note">Segmentation, attribution, and UI implementation cannot start until this gate clears. Marketing still has zero self-serve. Expected: end Dec 2026.</div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td class="bar gate-red">⚠ GATE</td><td></td><td></td><td></td>
+          </tr>
+
+          <tr class="phase-row bp3"><td colspan="11">PHASE 3 · Segmentation + Attribution + UI Implementation — blocked until OneID gate (Jan 2027+)</td></tr>
+          <tr>
+            <td class="ws">Segmentation logic build (Redshift SQL)<div class="ws-note">Blocked until OneID gate. Static segments only — no real-time update without reverse ETL. ~3–4 wks.</div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar bp3">Seg logic build</td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">Segmentation QA + test <b style="color:var(--red-text)">★ NEW</b><div class="ws-note">Test outputs against known merchant cohorts. Validate inclusion/exclusion, null handling, refresh cadence. Any logic error = rework. ~2–3 wks.</div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar bp3">Seg QA + test</td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">Attribution pipeline (UTM → CRM → activation → Redshift join)<div class="ws-note">Blocked until OneID gate. Parallel with seg build. Finance methodology must be agreed first. ~5–6 wks.</div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar bp3">Attribution build</td><td class="bar qa-red">QA</td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">Interface implementation — Merchant Portal, KConnect, Merchant App<div class="ws-note">Design completed pre-phase. Now build: in-app message triggers, portal notification hooks, KConnect dashboard integration. ~4–6 wks.</div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar bp3">UI impl.</td><td class="bar qa-red">QA</td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">End-to-end QA — segment → activation → channel → attribution loop<div class="ws-note">All Phase 3 workstreams must be individually complete before E2E QA. Any failure = rework affected layer. ~2–3 wks.</div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar qa-red">E2E QA</td><td></td>
+          </tr>
+          <tr>
+            <td class="ws">→ First complete use case status (Mar 27)<div class="ws-note">Best case: E2E QA clean on first attempt.</div></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar bp3">Potentially live</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="build-status-box">
+      <b>At Mar '27 (M10 from Jun start) — what Build has and has NOT shipped (best case):</b><br>
+      ✓ First HK use case <i>potentially</i> live (if E2E QA clean first attempt — any failure pushes to Apr–May '27).<br>
+      ✗ Marketing self-serve · ✗ Lifecycle automation · ✗ Push / WhatsApp · ✗ SG / AU / JP · ✗ Predictive models · ✗ Real-time segment refresh.<br><br>
+      <b>Compare Buy at the same point:</b> Phase 3 intelligence running · Predictive churn + LTV live · All 4 markets on shared data model · Western expansion launched Q3 with attribution from Day 1 · CAC Payback proven for 7+ months.
+    </div>
+
+    <div class="legend-row">
+      <span class="lg"><span class="sw" style="background:var(--coral-bg);border:1px solid var(--coral)"></span> Pre-Phase</span>
+      <span class="lg"><span class="sw" style="background:var(--amber-bg);border:1px solid var(--amber)"></span> Phase 1 — Transforms</span>
+      <span class="lg"><span class="sw" style="background:var(--pink-bg);border:1px solid var(--pink)"></span> Phase 2 — OneID</span>
+      <span class="lg"><span class="sw" style="background:var(--red-bg);border:1px solid var(--red)"></span> Phase 3 — Seg/Attr/UI</span>
+      <span class="lg"><span class="sw" style="background:var(--red);border:1px solid var(--red)"></span> ⚠ GATE</span>
+      <span class="lg"><span class="sw" style="background:var(--bg3);border:1px solid var(--text3)"></span> QA</span>
+    </div>
+  </div>
+</details>
+
+<!-- SECTION 7: STATUS AT M10 COMPARE -->
+<div class="section">
+  <div class="s-title"><span class="s-num">07</span>Status at Mar '27 (M10) — Buy vs Build</div>
+  <div class="s-sub">Best-case Build scenario (E2E QA clean first attempt). Any QA failure pushes go-live to Apr–May '27.</div>
+  <div class="status-compare">
+    <div class="status-card buy">
+      <div class="sc-h">🔵 Buy path — at M10</div>
+      <div class="sc-title">Phase 3 intelligence running across the business</div>
+      <ul>
+        <li>Predictive churn + LTV live in CDP</li>
+        <li>All 4 markets on shared data model</li>
+        <li>Western expansion (Ayden) launched Q3 with attribution from Day 1</li>
+        <li>CAC Payback proven for 7+ months</li>
+        <li>Marketing self-serves segments and journeys</li>
+        <li>Multi-channel lifecycle live (email, push, in-app, WhatsApp, SMS)</li>
+      </ul>
+    </div>
+    <div class="status-card build">
+      <div class="sc-h">🔴 Build path — at M10 (best case)</div>
+      <div class="sc-title">First HK use case potentially live · everything else still pending</div>
+      <ul>
+        <li>Marketing self-serve — every segment still a SQL ticket</li>
+        <li>Lifecycle automation — not built</li>
+        <li>Push / WhatsApp — not built</li>
+        <li>SG / AU / JP — not started</li>
+        <li>Predictive models — not built</li>
+        <li>Real-time segment refresh — not built</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 8: RESOURCES -->
+<div class="section">
+  <div class="s-title"><span class="s-num">08</span>Resource requirements</div>
+  <div class="s-sub">Buy doesn't eliminate the need for marketing-data talent — it changes what that talent does: from writing SQL and waiting for engineering tickets to designing journeys, validating segments, and reading attribution. Build needs more of both.</div>
+  <table class="res-table">
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th class="buy-col">🔵 Buy — CDP + CEP</th>
+        <th class="build-col">🔴 Build — Custom on Redshift</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="role">Marketing Data Analyst</td>
+        <td class="buy"><b>1 analyst from Phase 2/3 (Sep/Oct).</b> Designs and validates CDP segments, builds attribution dashboards, monitors cohorts, runs A/B analysis. One analyst covers all 4 markets at CDP maturity. <b>20% infrastructure / 80% insight.</b></td>
+        <td class="build"><b>1–2 analysts from Phase 3 (Jan '27+).</b> Writes SQL segment definitions for every audience request (no self-serve), specifies attribution logic for engineering to build, validates Redshift transforms. Every campaign segment requires an engineering ticket first. <b>80% infrastructure / 20% insight.</b></td>
+      </tr>
+      <tr>
+        <td class="role">Data Engineer (JieHuan's team)</td>
+        <td class="buy"><b>0.25–0.5 FTE (part-time).</b> Builds GPV / LTV / ICP enrichment models in Redshift, pushes via reverse ETL into CDP profiles. Focused on value-add modelling, not infrastructure plumbing.<br><b>Opportunity cost:</b> Internal. No incremental headcount.</td>
+        <td class="build"><b>2–3 FTE ring-fenced for ~7–9 months (Sep '26 – Mar/May '27).</b> Schema transforms per source, identity model build, segmentation logic, attribution pipeline, E2E QA. Engineers blocked from payments product work throughout.<br><b>Opportunity cost:</b> 2–3 engineers × 7–9 months.</td>
+      </tr>
+      <tr>
+        <td class="role">Martech PM (Rich)</td>
+        <td class="buy">Same on both paths. Design CDP use cases, manage vendor relationships, govern event taxonomy, lead stakeholder alignment, own AAARRR lifecycle strategy. No incremental headcount.</td>
+        <td class="build">Same role <b>plus materially heavier workload:</b> manages engineering sprint backlog for all CDP workstreams, coordinates schema sign-offs across 3+ teams, runs QA validation cycles. No capacity for strategic martech work until Phase 3.</td>
+      </tr>
+      <tr>
+        <td class="role">UX / Interface Designer</td>
+        <td class="buy"><b>Not required as separate hire.</b> CEP UI pre-built. Merchant Portal and KPay product activations use existing product design teams for surface integration.</td>
+        <td class="build"><b>Required.</b> Either existing product designers borrowed (competing with product roadmap) or contract designer engaged for CDP design.</td>
+      </tr>
+      <tr class="total">
+        <td class="role">Year 1 incremental cost</td>
+        <td class="buy"><b>TBA</b> — external analyst or data resource requirements to be confirmed after CDP capability assessment on Amplitude. Engineering opportunity cost: minimal (0.25–0.5 FTE, value-add modelling only).</td>
+        <td class="build"><b>2 analysts + contract designer.</b> Engineering opportunity cost: <b>USD $140–340K additional</b> (2–3 engineers × 7–9 months).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 9: INVESTMENT TCO -->
+<div class="section">
+  <div class="s-title"><span class="s-num">09</span>Investment — total cost of ownership</div>
+  <div class="s-sub">Year 1 anchored to confirmed vendor data where available. Ranges reflect MAU-tier negotiation outcomes. HubSpot Marketing Hub offset confirmed against current contract before final Finance approval.</div>
+  <table class="inv-table">
+    <thead>
+      <tr><th>Cost line</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th class="note">Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="line">CDP (analytics + AI bundle)</td>
+        <td class="amt">$60K – $80K</td>
+        <td class="amt">$60K – $80K</td>
+        <td class="amt">$60K – $80K+</td>
+        <td class="note">Per CDP investment brief, May 2026. Amplitude Growth plan. 3-year term recommended — full P1→P4 use case value takes 12+ months to realise; annual terms available but not cost-efficient. Range reflects MAU-tier negotiation. Y3 escalates with MAU growth — negotiate cap at contract.</td>
+      </tr>
+      <tr>
+        <td class="line">CEP (Customer Engagement Platform)</td>
+        <td class="amt">$0</td>
+        <td class="amt">~$30K</td>
+        <td class="amt">~$30K</td>
+        <td class="note">Phase 2+, gated on 5 conditions (Patrick): HubSpot scale limits proven, deliverability risk structural, MoEngage cross-market economics better, CDP segmentation live, no tool overlap. HubSpot stays as interim activation layer until conditions met. Formal MoEngage pricing quote (flat fee vs contact-based) pending.</td>
+      </tr>
+      <tr>
+        <td class="line">Implementation / onboarding (one-time)</td>
+        <td class="amt">$0 – $20K</td>
+        <td class="amt">—</td>
+        <td class="amt">—</td>
+        <td class="note">CDP onboarding support. Internal data team instrumentation time (opportunity cost, not vendor spend). Master Concept SI available for Segment/CDP if required.</td>
+      </tr>
+      <tr>
+        <td class="line">HubSpot Marketing Hub <span style="color:var(--text3);font-weight:400">(displaced Y2)</span></td>
+        <td class="amt">—</td>
+        <td class="amt green">−$55K offset</td>
+        <td class="amt green">−$55K offset</td>
+        <td class="note">Already signed and paid until March 2027 — no incremental Y1 cost. Y2: Marketing Hub displaced by CEP at migration — Sales Hub remains. Finance to confirm contract renewal date and offset timing.</td>
+      </tr>
+      <tr>
+        <td class="line">SensorData decommission <span style="color:var(--text3);font-weight:400">(potential offset)</span></td>
+        <td class="amt green">TBC</td>
+        <td class="amt green">TBC</td>
+        <td class="amt green">TBC</td>
+        <td class="note">Amplitude SDK covers the same behavioural analytics + event collection surface as SensorData. If SensorData is replaced, the licence is eliminated — partially offsetting CDP spend. Cost unknown: Benjamin owns the contract. <strong>Action: confirm SensorData contract value from Benjamin before Martin sign-off.</strong></td>
+      </tr>
+      <tr>
+        <td class="line" style="color:var(--text3)"><i>Reference — rejected Build path</i></td>
+        <td class="amt red"><i>2–3 FTE Eng</i></td>
+        <td class="amt red"><i>Ongoing</i></td>
+        <td class="amt red"><i>Ongoing</i></td>
+        <td class="note"><i>HK$3M+ anchor (KBA business account product). 2–3 senior engineers × 12–18 months diverted from payments product. Plus 1–2 marketing data analysts on SQL ticket queue.</i></td>
+      </tr>
+      <tr class="total">
+        <td class="line">Annual platform spend — new incremental cost</td>
+        <td class="amt">$60K – $100K</td>
+        <td class="amt">$90K – $110K <span style="font-size:10px;color:var(--text3);display:block;font-weight:400">~$35–55K net after HubSpot offset</span></td>
+        <td class="amt">$90K – $110K <span style="font-size:10px;color:var(--text3);display:block;font-weight:400">net TBD at renewal</span></td>
+        <td class="note">
+          <b>Y1 math:</b> CDP ($60–80K) + Impl. ($0–20K) = $60K–$100K · HubSpot excluded (already contracted to Mar 2027)<br>
+          <b>Y2 math:</b> CDP ($60–80K) + CEP ($30K) = $90K–$110K gross · net after HubSpot offset = ~$35–55K (pending Finance confirmation)<br>
+          <b>Y3:</b> CDP ($60–80K+) + CEP ($30K) at higher MAU tier
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="callout info"><b>Headline:</b> ~USD $60K–$100K net Year 1 (HubSpot already contracted to Mar 2027) to deliver what would otherwise cost <b>HK$3M+ and 12–18 months</b> to build in-house. Buy ships 4–5 months earlier with marketer self-serve from Day 1.</div>
+</div>
+
+<!-- RISK REGISTER -->
+<div class="section">
+  <div class="s-title"><span class="s-num" style="background:var(--red-bg);color:var(--red-text)">R</span>Risk register — updated May 20, 2026</div>
+  <div class="s-sub">Risks from vendor evaluation + Patrick alignment session May 19. Severity = impact × likelihood.</div>
+
+  <table style="width:100%;border-collapse:separate;border-spacing:0;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;font-size:12px">
+    <thead>
+      <tr>
+        <th style="background:var(--bg3);padding:9px 12px;text-align:left;font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.4px;width:20%;border-bottom:1px solid var(--border)">Risk</th>
+        <th style="background:var(--bg3);padding:9px 12px;text-align:left;font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.4px;width:37%;border-bottom:1px solid var(--border)">Impact if realised</th>
+        <th style="background:var(--bg3);padding:9px 12px;text-align:left;font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.4px;width:35%;border-bottom:1px solid var(--border)">Mitigation</th>
+        <th style="background:var(--bg3);padding:9px 12px;text-align:center;font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.4px;width:8%;border-bottom:1px solid var(--border)">Level</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text);font-weight:600">OneID slips past Aug 27</td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Profiles deduplicate poorly — same merchant appears as multiple records</li>
+            <li>· Multi-outlet identity broken — SID can't be resolved as primary node</li>
+            <li>· Attribution chain unreliable — campaign → activation stitching breaks</li>
+            <li>· Use cases degraded in quality, not blocked outright</li>
+            <li>· Stakeholder trust risk if trade-off is not communicated upfront</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Escalate to Martin (COO) — confirm Aug 27 Merchant OneID delivery as a committed date from engineering and product (Kai + Benjamin), not a best-effort estimate. Without this confirmation, DG cannot plan Phase 1 use case quality or communicate realistic timelines to stakeholders</li>
+            <li>· Proceed in parallel — basic analytics live, full-quality use cases gated</li>
+            <li>· Acknowledge degraded mode proactively — not post-launch</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;vertical-align:top"><span style="display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:var(--red-bg);color:var(--red-text)">High</span></td>
+      </tr>
+
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text);font-weight:600">Data &amp; product team non-commitment</td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· JieHuan + Kai not responding to DG requests — CDP not on their priority list</li>
+            <li>· Taxonomy can't be validated without data team</li>
+            <li>· Pipeline work stalls — SID model can't be confirmed</li>
+            <li>· Deal breaker — no workaround exists</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· COO mandate required — must come as a directive from Martin, not a DG request</li>
+            <li>· Formal kickoff with capacity commitments documented</li>
+            <li>· If capacity can't be carved out: external resource or stop — yes or no, no middle ground</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;vertical-align:top"><span style="display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:var(--red-bg);color:var(--red-text)">High</span></td>
+      </tr>
+
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text);font-weight:600">Tier-4 PII in CDP <span style="display:inline-block;font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;background:var(--red-bg);color:var(--red-text);margin-left:4px">Regulatory</span></td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Shareholder IDs, passport data, cardholder transactions in scope for PDPO/PDPA</li>
+            <li>· If these reach the CDP — regulatory breach, not just a data quality issue</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Hard exclusion enforced at Redshift data classification — JieHuan owns, Benjamin signs off</li>
+            <li>· Auditable data tier map required as Phase 0 deliverable before any PII flows into Amplitude</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;vertical-align:top"><span style="display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:var(--red-bg);color:var(--red-text)">High</span></td>
+      </tr>
+
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text);font-weight:600">Benjamin governance bottleneck <span style="display:inline-block;font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;background:var(--coral-bg);color:var(--coral-text);margin-left:4px">New · May 19</span></td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Approving compliance + governance decisions via template — no specialist expertise</li>
+            <li>· <strong>Romano (compliance reviewer) blanket-approves based on Benjamin’s templates</strong> without independent legal or PDPO/PDPA review — the chain is Benjamin → Romano with no specialist in the loop</li>
+            <li>· Teams currently can't get data access — blanket approvals or denials</li>
+            <li>· Root cause of the existing data access problem across DG</li>
+            <li style="margin-top:8px;font-weight:600;color:var(--text)">Phase 1 integrations requiring Benjamin sign-off:</li>
+            <li style="padding-left:10px">— <strong>HubSpot → Amplitude</strong> · contact + engagement data sync · marketing data forwarding approval</li>
+            <li style="padding-left:10px">— <strong>Redshift → Amplitude</strong> · merchant profile data · data classification + tier approval (JieHuan + Benjamin)</li>
+            <li style="padding-left:10px">— <strong>CRM → Amplitude</strong> · MQL/SQL pipeline data · Lead Ops data forwarding approval</li>
+            <li style="padding-left:10px">— <strong>SensorData → Amplitude</strong> · behavioural events · compliance on data forwarding from ByteDance-origin tool</li>
+            <li style="padding-left:10px">— <strong>Amplitude → Meta/Google</strong> · audience segments for paid media · outbound data transfer approval</li>
+            <li>· Without pre-approval on each connector, budget sign-off from Martin doesn't unblock anything — each integration stalls individually</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Establish compliance working group — Benjamin (security) + HK PDPO TBC + Rex (PDPA) + Jonas (legal)</li>
+            <li>· Define review criteria, SLAs, and escalation path</li>
+            <li>· Security officer ≠ data governance role — separate the two competencies</li>
+            <li>· Submit the 5 named integrations above for pre-approval as part of Martin's sign-off package — so access is unblocked at kickoff, not discovered one by one during implementation</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;vertical-align:top"><span style="display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:var(--amber-bg);color:var(--amber-text)">Med</span></td>
+      </tr>
+
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text);font-weight:600">No data team roadmap <span style="display:inline-block;font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;background:var(--coral-bg);color:var(--coral-text);margin-left:4px">New · May 19</span></td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· JieHuan's team has no published roadmap — priorities and capacity unknown</li>
+            <li>· CDP scope assumes availability that may not exist</li>
+            <li>· Discovery at kickoff = surprise, not planning</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Require data team roadmap as Phase 0 kickoff input</li>
+            <li>· Confirm: current initiatives, CDP fit, capacity commitment in hrs/weeks</li>
+            <li>· Block Phase 0 exit gate until this is documented</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;vertical-align:top"><span style="display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:var(--amber-bg);color:var(--amber-text)">Med</span></td>
+      </tr>
+
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text);font-weight:600">HubSpot deliverability risk <span style="display:inline-block;font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;background:var(--coral-bg);color:var(--coral-text);margin-left:4px">New · May 19</span></td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Single HubSpot instance = shared email domain + sender IP across all markets</li>
+            <li>· One market's bad list hygiene affects all others' sender reputation</li>
+            <li>· Already occurring today — manual list uploads, no unsubscribe hygiene confirmed</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Enforce list hygiene standards before any new market scale</li>
+            <li>· Segment sender reputation by subdomain where possible</li>
+            <li>· If structural (not hygiene-solvable) → strengthens Phase 2 CEP case — one of Patrick's 5 conditions</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;vertical-align:top"><span style="display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:var(--amber-bg);color:var(--amber-text)">Med</span></td>
+      </tr>
+
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text);font-weight:600">SensorData schema debt</td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Events firing with Chinese naming conventions + v1/v2 conflicts</li>
+            <li>· Every week without schema lock = more cleanup debt before CDP is usable</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Phase 0 exit criterion: taxonomy locked before any events ingest into Amplitude</li>
+            <li>· Amplitude Govern enforces schema from Day 1</li>
+            <li>· SensorData replacement = clean slate — assessment in progress</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;vertical-align:top"><span style="display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:var(--amber-bg);color:var(--amber-text)">Med</span></td>
+      </tr>
+
+      <tr>
+        <td style="padding:10px 12px;vertical-align:top;color:var(--text);font-weight:600">Amplitude GCP residency (HK)</td>
+        <td style="padding:10px 12px;vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Amplitude runs on GCP — HK PDPO residency requirements not yet confirmed</li>
+            <li>· HK merchant data must be stored in an acceptable GCP region</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· HK PDPO owner (TBC) + Benjamin to confirm in compliance review (June)</li>
+            <li>· If unacceptable → evaluate logical isolation options or flag Tealium as alternative</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;text-align:center;vertical-align:top"><span style="display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:var(--amber-bg);color:var(--amber-text)">Med</span></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<!-- WHAT'S NEXT -->
+<div class="section">
+  <div class="s-title"><span class="s-num">10</span>Pre-kickoff dependencies &amp; decision log</div>
+  <div class="s-sub">Updated post May 19 Patrick alignment. Status as of May 20, 2026. <strong>Three decisions from Martin gate this programme</strong> — highlighted below. All other items are in progress independently.</div>
+
+  <div style="background:var(--red-bg);border:2px solid var(--red);border-radius:10px;padding:18px 22px;margin-bottom:16px">
+    <div style="font-size:13px;font-weight:700;color:var(--red-text);margin-bottom:14px">&#9940; Three decisions needed from Martin before programme kicks off</div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+
+      <div style="display:flex;align-items:flex-start;gap:14px;background:var(--bg);border-radius:8px;padding:12px 16px">
+        <div style="flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--red);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center">1</div>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px">Confirm Merchant OneID Aug 27 delivery as a <em>committed</em> date — not aspirational</div>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--red-text);font-weight:700">·</span>Benjamin + Kai must formally commit engineering and product capacity to this delivery</li>
+            <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--red-text);font-weight:700">·</span>The ask is scoped: prioritise the <strong>~10% of OneID scope</strong> the Phase 1 pilot needs (merchant entity + outlet SID linkage for HK) — not the full build</li>
+            <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--red-text);font-weight:700">·</span>If date slips, all Phase 1 use-case quality degrades — this must be an explicit, documented commitment</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:14px;background:var(--bg);border-radius:8px;padding:12px 16px">
+        <div style="flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--red);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center">2</div>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px">COO mandate: ring-fence JieHuan (data team) + Kai (product) for CDP work</div>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--red-text);font-weight:700">·</span>JieHuan&apos;s team is not responding to Digital Growth requests — CDP is not on their priority list</li>
+            <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--red-text);font-weight:700">·</span>Kai must commit Merchant OneID API capacity; JieHuan must commit to taxonomy + pipeline work</li>
+            <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--red-text);font-weight:700">·</span>This must come as a directive from COO — it cannot be a request from Martech PM. Without it, the programme stalls regardless of budget approval</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:14px;background:var(--bg);border-radius:8px;padding:12px 16px">
+        <div style="flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--red);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center">3</div>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px">Budget approval: Amplitude Growth plan — $60–80K/yr, 3-year term</div>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--red-text);font-weight:700">·</span>Patrick go-signal received May 19 — pending COO sign-off only</li>
+            <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--red-text);font-weight:700">·</span>3-year term required — realising the full use-case value takes &ge;12 months; annual terms available but not cost-efficient</li>
+            <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--red-text);font-weight:700">·</span>Budget approval also unlocks the compliance review — Rex, HK PDPO, and Jonas (legal) cannot be formally engaged without a committed budget line</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="dep-grid">
+    <div class="dep-card" style="border-color:var(--teal)">
+      <div class="dep-h" style="color:var(--teal-text)">✅ Vendor selection — complete</div>
+      <ul>
+        <li><b>Amplitude Growth plan</b> — selected. Patrick go signal received May 19. Pending Martin budget approval.</li>
+        <li><b>Mixpanel</b> — ruled out. Evaluation session to be recorded as documented evidence.</li>
+        <li><b>2-week trial</b> — Amplitude to provide trial environment (sample + own data) before contract signing.</li>
+        <li><b>SensorData</b> — replacement assessment in progress. Separate recommendation before contract.</li>
+      </ul>
+    </div>
+
+    <div class="dep-card" style="border-color:var(--red)">
+      <div class="dep-h" style="color:var(--red-text)">⛔ COO decision needed — Merchant OneID delivery date</div>
+      <ul>
+        <li><b>Aug 27 OneID target</b> must be confirmed as a committed delivery date — not aspirational</li>
+        <li><b>Engineering + product team</b> (Benjamin + Kai) must formally commit capacity to this delivery</li>
+        <li>If date slips, contract signing and Phase 1 go-live delay with it — explicitly communicated to all teams</li>
+        <li>Parallel-path option available: POC can start with acknowledged data accuracy trade-off — framed transparently</li>
+      </ul>
+    </div>
+
+    <div class="dep-card">
+      <div class="dep-h">COO mandate needed — Data &amp; product team commitment</div>
+      <ul>
+        <li><b>JieHuan's data team</b> — capacity ring-fenced for taxonomy + schema lock + pipeline work. Currently not responding to DG requests — not on their priority list.</li>
+        <li><b>Kai's product team</b> — Merchant OneID delivery + API commitment required</li>
+        <li><b>Martin mandate needed</b> — this cannot come from Rich as a request; it must come as a directive from COO level</li>
+        <li><b>Schema lock workshop</b> — Martech + Data + Product. Schema must lock before events fire (no retroactive cleanup).</li>
+      </ul>
+    </div>
+
+    <div class="dep-card">
+      <div class="dep-h">Compliance — in progress (June)</div>
+      <ul>
+        <li><b>Rex (SG/PDPA)</b> — Amplitude security checklist sent — review in progress. Data residency + cross-border confirmed.</li>
+        <li><b>HK PDPO</b> — compliance owner TBC. Data classification + cross-border residency for HK merchant data on GCP to be assigned.</li>
+        <li><b>Jonas (Head of Legal)</b> — vendor DPA + cross-border data residency review</li>
+        <li><b>Raymondo (AU/Privacy Act)</b> — AU scope Phase 2, review to be initiated at Phase 1 exit</li>
+      </ul>
+    </div>
+
+    <div class="dep-card" style="border-color:var(--amber)">
+      <div class="dep-h" style="color:var(--amber-text)">⚠ Org risk — Benjamin governance bottleneck</div>
+      <ul>
+        <li><b>Root cause flagged (May 19):</b> Benjamin is approving compliance and data governance decisions via template — without specialist expertise. Teams cannot get data access as a result.</li>
+        <li><b>Mitigation:</b> Establish formal compliance working group — Benjamin (security) + HK PDPO owner (TBC) + Rex (PDPA/SG) + Jonas (legal) — with defined review criteria, timelines, and escalation path</li>
+        <li>Benjamin is the security officer, not the data governance specialist. These are different roles.</li>
+      </ul>
+    </div>
+
+    <div class="dep-card">
+      <div class="dep-h">Methodology &amp; measurement</div>
+      <ul>
+        <li><b>CAC Payback methodology</b> — open question: BD commission in or out of CAC? Needs Finance + Jervis alignment</li>
+        <li><b>NSM progression locked:</b> Volume (P1) → CAC Payback (P2) → ROI / LTV (P3)</li>
+        <li><b>LTV methodology</b> — no finance-approved calculation exists yet. Flagged as pending, not assumed.</li>
+        <li><b>Wendy + Rachel</b> — DMO tracking + HubSpot lifecycle use cases; Lark Base tracker live (UC-001 + UC-029 seeded)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout info" style="margin-top:14px"><b>Patrick's parallel-pathing principle:</b> Foundation work (taxonomy, compliance, data model) runs now — June. Does not wait for contract or OneID. Quick wins and foundation build simultaneously, not sequentially.</div>
+  <div class="callout success"><b>What success looks like at Day 90 (post-kickoff):</b> First HK merchant audience live · CAC by channel measurable · ICP lookalike audiences synced to Meta + Google · marketer self-serves first segment without an engineering ticket.</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>KPay Digital Growth · Martech Programme · Author: Rich Constantine (Martech PM) · Reviewed: Patrick (Head of Digital Growth)</div>
+  <div>v1.2 · May 21, 2026 · Status: Pending COO approval · 3 asks to Martin: (1) budget approval (2) data + product team mandate (3) OneID Aug 27 commitment</div>
+</div>
+
+</body>
+</html>
