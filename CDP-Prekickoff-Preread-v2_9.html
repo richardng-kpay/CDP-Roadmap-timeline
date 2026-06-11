@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KPay Martech CDP — Kick-off Pre-read v2.8</title>
+<style>
+:root {
+  --bg: #FAFAF8; --bg2: #F1EFE8; --bg3: #E8E6DF;
+  --text: #1A1A18; --text2: #5F5E5A; --text3: #888780;
+  --border: rgba(0,0,0,0.12);
+  --purple: #534AB7; --purple-bg: #EEEDFE; --purple-text: #3C3489;
+  --teal: #0F6E56; --teal-bg: #E1F5EE; --teal-text: #085041;
+  --coral: #D85A30; --coral-bg: #FAECE7; --coral-text: #712B13;
+  --amber: #BA7517; --amber-bg: #FAEEDA; --amber-text: #633806;
+  --green: #639922; --green-bg: #EAF3DE; --green-text: #27500A;
+  --blue: #185FA5; --blue-bg: #E6F1FB; --blue-text: #0C447C;
+  --pink: #993556; --pink-bg: #FBEAF0; --pink-text: #72243E;
+  --red: #B73A3A; --red-bg: #FCEBEB; --red-text: #791F1F;
+  --font: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1A1A18; --bg2: #2C2C2A; --bg3: #3D3D3A;
+    --text: #E8E6DF; --text2: #B4B2A9; --text3: #888780;
+    --border: rgba(255,255,255,0.12);
+    --purple-bg: #26215C; --purple-text: #CECBF6;
+    --teal-bg: #04342C; --teal-text: #9FE1CB;
+    --coral-bg: #4A1B0C; --coral-text: #F5C4B3;
+    --amber-bg: #412402; --amber-text: #FAC775;
+    --green-bg: #173404; --green-text: #C0DD97;
+    --blue-bg: #042C53; --blue-text: #B5D4F4;
+    --pink-bg: #4B1528; --pink-text: #F4C0D1;
+    --red-bg: #501313; --red-text: #F7C1C1;
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  padding: 32px 24px 64px;
+  max-width: 1080px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* HEADER */
+.header { margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1.5px solid var(--border); }
+.header h1 { font-size: 26px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.2px; }
+.header .sub { font-size: 14px; color: var(--text2); margin-bottom: 14px; }
+.ver { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 500; background: var(--blue-bg); color: var(--blue-text); margin-left: 8px; vertical-align: middle; }
+.headline-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 16px; }
+.hc { padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 10px; background: var(--bg2); }
+.hc .val { font-size: 18px; font-weight: 600; color: var(--text); }
+.hc .lbl { font-size: 11px; color: var(--text3); margin-top: 3px; line-height: 1.3; }
+.hc.accent { border-color: var(--purple); background: var(--purple-bg); }
+.hc.accent .val { color: var(--purple-text); }
+
+/* SECTIONS */
+.section { margin-top: 32px; }
+.s-title { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 4px; display: flex; align-items: center; gap: 10px; }
+.s-num { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; background: var(--purple-bg); color: var(--purple-text); }
+.s-sub { font-size: 13px; color: var(--text2); margin-bottom: 14px; }
+
+/* PROBLEM CARDS */
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.prob-card { border: 1.5px solid var(--border); border-radius: 10px; padding: 14px 16px; background: var(--bg2); }
+.prob-card .q-num { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px; background: var(--coral-bg); color: var(--coral-text); margin-bottom: 6px; }
+.prob-card .q-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.prob-card .q-state { font-size: 12px; color: var(--text2); line-height: 1.55; margin-bottom: 8px; }
+.prob-card .q-cost { font-size: 12px; color: var(--red-text); background: var(--red-bg); padding: 8px 10px; border-radius: 6px; line-height: 1.5; border-left: 2px solid var(--red); }
+.prob-card .q-cost b { font-weight: 600; }
+.prob-card .q-cost ul { list-style: none; padding: 0; margin: 4px 0 0; }
+.prob-card .q-cost li { padding: 2px 0 2px 14px; position: relative; line-height: 1.5; }
+.prob-card .q-cost li:before { content: '•'; position: absolute; left: 2px; font-weight: 700; }
+.prob-card .q-cost ul { list-style: none; padding: 0; margin: 4px 0 0; }
+.prob-card .q-cost li { padding: 2px 0 2px 14px; position: relative; line-height: 1.5; }
+.prob-card .q-cost li:before { content: '•'; position: absolute; left: 2px; font-weight: 700; }
+
+/* STACK CARDS */
+.stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.stack-card { border: 1.5px solid var(--border); border-radius: 10px; padding: 14px 16px; background: var(--bg2); }
+.stack-card.cdp { border-color: var(--purple); background: var(--purple-bg); }
+.stack-card.cep { border-color: var(--teal); background: var(--teal-bg); }
+.stack-card .layer-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 4px; }
+.stack-card.cdp .layer-tag { color: var(--purple-text); }
+.stack-card.cep .layer-tag { color: var(--teal-text); }
+.stack-card .layer-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+.stack-card ul { list-style: none; padding: 0; }
+.stack-card li { font-size: 12px; color: var(--text2); padding: 3px 0 3px 14px; position: relative; line-height: 1.5; }
+.stack-card li:before { content: '•'; position: absolute; left: 4px; color: var(--text3); }
+.stack-card li b { color: var(--text); font-weight: 600; }
+.flow-arrow { text-align: center; padding: 6px 0; font-size: 16px; color: var(--text3); }
+.flow-note { font-size: 12px; color: var(--text3); background: var(--bg3); padding: 8px 12px; border-radius: 6px; margin-top: 8px; line-height: 1.55; border-left: 2px solid var(--purple); }
+
+/* NSM FRAMEWORK BLOCK */
+.nsm-block { margin-bottom: 16px; }
+.nsm-row { margin-bottom: 10px; }
+.nsm-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.nsm-card { border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 14px; background: var(--bg2); }
+.nsm-card .nsm-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; }
+.nsm-card .nsm-metric { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.nsm-card .nsm-unit { font-size: 12px; font-weight: 500; color: var(--text2); }
+.nsm-card .nsm-desc { font-size: 12px; color: var(--text2); line-height: 1.55; }
+.nsm-card .nsm-desc b { color: var(--text); font-weight: 600; }
+.nsm-card ul { list-style: none; padding: 0; margin: 0; }
+.nsm-card li { font-size: 12.5px; color: var(--text2); padding: 4px 0 4px 14px; position: relative; line-height: 1.6; }
+.nsm-card li:before { content: '·'; position: absolute; left: 2px; font-weight: 700; color: var(--text3); }
+.nsm-card li b { color: var(--text); font-weight: 600; }
+.nsm-card.nsm-north { border: 2px solid var(--purple); background: var(--purple-bg); }
+.nsm-card.nsm-north .nsm-tag { color: var(--purple-text); }
+.nsm-card.nsm-supp { border-color: var(--teal); background: var(--teal-bg); }
+.nsm-card.nsm-supp .nsm-tag { color: var(--teal-text); }
+.nsm-card.nsm-guard { border-color: var(--amber); background: var(--amber-bg); }
+.nsm-card.nsm-guard .nsm-tag { color: var(--amber-text); }
+.nsm-card.nsm-trade { border-color: var(--text3); background: var(--bg3); }
+.nsm-card.nsm-trade .nsm-tag { color: var(--text2); }
+
+/* OUTCOMES TABLE */
+.outcomes-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+.outcomes-table th { background: var(--bg3); color: var(--text2); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+.outcomes-table td { padding: 13px; vertical-align: top; font-size: 13.5px; line-height: 1.6; color: var(--text2); border-bottom: 1px solid var(--border); }
+.outcomes-table tr:last-child td { border-bottom: none; }
+.outcomes-table td.outcome-name { font-weight: 600; color: var(--text); font-size: 13px; width: 18%; }
+.outcomes-table td.metric { width: 18%; }
+.outcomes-table .metric-pill { display: inline-block; padding: 3px 9px; border-radius: 6px; font-size: 11px; font-weight: 500; background: var(--purple-bg); color: var(--purple-text); }
+.outcomes-table .proof { font-size: 11.5px; color: var(--text3); width: 28%; font-style: italic; }
+.outcomes-table .proof b { font-weight: 600; color: var(--text2); font-style: normal; }
+
+/* BUY vs BUILD SPRINT TABLE */
+.sprint-callout { background: var(--amber-bg); border-left: 3px solid var(--amber); padding: 10px 14px; border-radius: 6px; font-size: 12px; color: var(--amber-text); margin-bottom: 12px; line-height: 1.6; }
+.sprint-callout b { font-weight: 600; }
+.sprint-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+.sprint-table th { background: var(--bg3); color: var(--text2); font-size: 11px; font-weight: 600; padding: 10px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+.sprint-table th.buy-col { background: var(--blue-bg); color: var(--blue-text); }
+.sprint-table th.build-col { background: var(--red-bg); color: var(--red-text); }
+.sprint-table th.gate-col { background: var(--bg3); color: var(--text2); }
+.sprint-table td { padding: 11px 10px; vertical-align: top; font-size: 12px; line-height: 1.5; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+.sprint-table td:last-child { border-right: none; }
+.sprint-table tr:last-child td { border-bottom: none; }
+.sprint-table .sprint-cell { width: 8%; font-weight: 600; background: var(--bg2); color: var(--text); }
+.sprint-table .wk-cell { width: 8%; font-size: 11px; color: var(--text3); background: var(--bg2); }
+.sprint-table .buy-cell { width: 31%; background: var(--bg); }
+.sprint-table .buy-cell.win { background: var(--blue-bg); }
+.sprint-table .build-cell { width: 31%; background: var(--bg); }
+.sprint-table .build-cell.fail { background: var(--red-bg); }
+.sprint-table .gate-cell { width: 22%; font-size: 11px; color: var(--text2); background: var(--bg2); }
+.sprint-table .gate-cell.gate { background: var(--amber-bg); color: var(--amber-text); }
+.sprint-table .milestone { font-weight: 600; color: var(--blue-text); font-size: 11px; display: inline-block; padding: 2px 7px; border-radius: 4px; background: var(--blue-bg); margin-bottom: 4px; }
+.sprint-table .blocker { font-weight: 600; color: var(--red-text); font-size: 11px; display: inline-block; padding: 2px 7px; border-radius: 4px; background: var(--red-bg); margin-bottom: 4px; }
+.sprint-table b { font-weight: 600; color: var(--text); }
+.sprint-table .outcome { display: block; margin-top: 6px; padding: 4px 8px; border-radius: 4px; font-size: 11.5px; }
+.sprint-table .outcome.win { background: var(--green-bg); color: var(--green-text); }
+.sprint-table .outcome.fail { background: var(--red-bg); color: var(--red-text); }
+.sprint-table ul.cell-bullets { list-style: none; padding: 0; margin: 0; }
+.sprint-table ul.cell-bullets li { font-size: 11.5px; padding: 3px 0 3px 12px; position: relative; line-height: 1.45; color: var(--text2); }
+.sprint-table ul.cell-bullets li:before { content: '•'; position: absolute; left: 2px; color: var(--text3); font-weight: 600; }
+.sprint-table ul.cell-bullets li b { color: var(--text); font-weight: 600; }
+.sprint-table ul.cell-bullets li.star { color: var(--text); font-weight: 600; padding-left: 14px; }
+.sprint-table ul.cell-bullets li.star:before { content: '⭐'; left: 0; }
+.sprint-table ul.gate-bullets { list-style: none; padding: 0; margin: 0; }
+.sprint-table ul.gate-bullets li { font-size: 11px; padding: 3px 0; line-height: 1.45; }
+
+/* VERDICT BLOCK */
+.verdict-block { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.verdict-card { border: 1.5px solid; border-radius: 10px; padding: 14px 18px; }
+.verdict-card.buy { border-color: var(--green); background: var(--green-bg); }
+.verdict-card.build { border-color: var(--red); background: var(--red-bg); }
+.verdict-card .v-h { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+.verdict-card.buy .v-h { color: var(--green-text); }
+.verdict-card.build .v-h { color: var(--red-text); }
+.verdict-card ul { list-style: none; padding: 0; margin: 0; }
+.verdict-card li { font-size: 12.5px; padding: 4px 0 4px 16px; position: relative; line-height: 1.5; color: var(--text2); }
+.verdict-card.buy li:before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 600; }
+.verdict-card.build li:before { content: '✗'; position: absolute; left: 0; color: var(--red); font-weight: 600; }
+.verdict-card li b { color: var(--text); font-weight: 600; }
+
+/* PHASE CHEVRON */
+.phase-chevrons { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 16px 0; }
+.phase-chev { padding: 14px 14px 12px; border-radius: 10px; border: 1.5px solid var(--border); position: relative; }
+.phase-chev.p0 { background: var(--green-bg); border-color: var(--green); }
+.phase-chev.p1 { background: var(--blue-bg); border-color: var(--blue); }
+.phase-chev.p2 { background: var(--amber-bg); border-color: var(--amber); }
+.phase-chev.p3 { background: var(--purple-bg); border-color: var(--purple); }
+.phase-chev.p4 { background: var(--pink-bg); border-color: var(--pink); }
+.phase-chev .ph-num { font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 3px; }
+.phase-chev.p0 .ph-num { color: var(--green-text); }
+.phase-chev.p1 .ph-num { color: var(--blue-text); }
+.phase-chev.p2 .ph-num { color: var(--amber-text); }
+.phase-chev.p3 .ph-num { color: var(--purple-text); }
+.phase-chev.p4 .ph-num { color: var(--pink-text); }
+.phase-chev .ph-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 5px; line-height: 1.3; }
+.phase-chev .ph-when { font-size: 11px; color: var(--text2); margin-bottom: 6px; }
+.phase-chev .ph-desc { font-size: 11px; color: var(--text2); line-height: 1.45; }
+.principle { background: var(--purple-bg); border: 1px solid var(--purple); border-radius: 8px; padding: 10px 14px; font-size: 12.5px; color: var(--purple-text); margin-bottom: 14px; line-height: 1.5; }
+.principle b { font-weight: 600; }
+
+/* GANTT */
+.gantt-wrap { overflow-x: auto; margin-top: 10px; }
+.gantt-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; min-width: 900px; }
+.gantt-table th { background: var(--bg3); color: var(--text2); font-size: 11px; font-weight: 600; padding: 8px 6px; text-align: center; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+.gantt-table th.ws-header { text-align: left; padding-left: 12px; width: 30%; }
+.gantt-table td { padding: 8px 6px; font-size: 11px; vertical-align: middle; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); height: 38px; }
+.gantt-table tr:last-child td { border-bottom: none; }
+.gantt-table td.ws { padding-left: 12px; font-size: 12px; color: var(--text); font-weight: 500; background: var(--bg2); width: 30%; line-height: 1.4; }
+.gantt-table td.ws .ws-note { font-size: 10.5px; color: var(--text3); font-weight: 400; margin-top: 2px; }
+.gantt-table td.bar { text-align: center; font-size: 10px; font-weight: 500; color: var(--text2); }
+.gantt-table .phase-row td { background: var(--bg3); font-weight: 600; font-size: 11px; padding: 7px 12px; color: var(--text); }
+.gantt-table .phase-row.p0 td { background: var(--green-bg); color: var(--green-text); }
+.gantt-table .phase-row.p1 td { background: var(--blue-bg); color: var(--blue-text); }
+.gantt-table .phase-row.p2 td { background: var(--amber-bg); color: var(--amber-text); }
+.gantt-table .phase-row.p3 td { background: var(--purple-bg); color: var(--purple-text); }
+.gantt-table .bar.p0 { background: var(--green-bg); color: var(--green-text); }
+.gantt-table .bar.p1 { background: var(--blue-bg); color: var(--blue-text); }
+.gantt-table .bar.p2 { background: var(--amber-bg); color: var(--amber-text); }
+.gantt-table .bar.p3 { background: var(--purple-bg); color: var(--purple-text); }
+.gantt-table .bar.gate { background: var(--coral-bg); color: var(--coral-text); font-weight: 600; }
+.gantt-table .bar.go { background: var(--green-bg); color: var(--green-text); font-weight: 600; }
+.gantt-table .bar.qa { background: var(--bg3); color: var(--text3); font-weight: 500; }
+
+/* STATUS COMPARE */
+.status-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.status-card { border: 1.5px solid; border-radius: 10px; padding: 16px 18px; }
+.status-card.buy { border-color: var(--blue); background: var(--blue-bg); }
+.status-card.build { border-color: var(--red); background: var(--red-bg); }
+.status-card .sc-h { font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 4px; }
+.status-card.buy .sc-h { color: var(--blue-text); }
+.status-card.build .sc-h { color: var(--red-text); }
+.status-card .sc-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+.status-card ul { list-style: none; padding: 0; }
+.status-card li { font-size: 12.5px; padding: 3px 0 3px 18px; position: relative; line-height: 1.5; color: var(--text2); }
+.status-card.buy li:before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 600; }
+.status-card.build li:before { content: '✗'; position: absolute; left: 0; color: var(--red); font-weight: 600; }
+
+/* RESOURCES TABLE */
+.res-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+.res-table th { background: var(--bg3); color: var(--text2); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+.res-table th.buy-col { background: var(--blue-bg); color: var(--blue-text); }
+.res-table th.build-col { background: var(--red-bg); color: var(--red-text); }
+.res-table td { padding: 12px; vertical-align: top; font-size: 12px; line-height: 1.5; color: var(--text2); border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+.res-table td:last-child { border-right: none; }
+.res-table tr:last-child td { border-bottom: none; }
+.res-table td.role { font-weight: 600; color: var(--text); width: 18%; background: var(--bg2); }
+.res-table td b { font-weight: 600; color: var(--text); }
+.res-table td.buy { background: var(--bg); }
+.res-table td.build { background: var(--bg); }
+.res-table tr.total td { background: var(--bg2); font-weight: 500; color: var(--text); }
+
+/* INVESTMENT */
+.inv-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+.inv-table th { background: var(--bg3); color: var(--text2); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+.inv-table td { padding: 11px 12px; vertical-align: top; font-size: 12px; line-height: 1.5; color: var(--text2); border-bottom: 1px solid var(--border); }
+.inv-table tr:last-child td { border-bottom: none; }
+.inv-table td.line { font-weight: 500; color: var(--text); width: 28%; }
+.inv-table td.amt { font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; width: 12%; }
+.inv-table td.amt.green { color: var(--green-text); }
+.inv-table td.amt.red { color: var(--red-text); }
+.inv-table td.note { font-size: 11.5px; color: var(--text3); width: 36%; }
+.inv-table tr.total td { background: var(--purple-bg); font-weight: 600; color: var(--purple-text); border-top: 1.5px solid var(--purple); }
+
+.nsm-card .p0-tag { background: var(--red-bg); color: var(--red-text); border-radius: 3px; padding: 1px 5px; font-size: 9px; font-weight: 600; margin-right: 4px; letter-spacing: 0.3px; }
+.nsm-card .p1-tag { background: var(--amber-bg); color: var(--amber-text); border-radius: 3px; padding: 1px 5px; font-size: 9px; font-weight: 600; margin-right: 4px; letter-spacing: 0.3px; }
+.nsm-card .p2-tag { background: var(--bg3); color: var(--text2); border-radius: 3px; padding: 1px 5px; font-size: 9px; font-weight: 600; margin-right: 4px; letter-spacing: 0.3px; }
+
+.pri-p0 { font-size: 9px; color: var(--red-text); font-weight: 600; margin-left: 4px; }
+.pri-p1 { font-size: 9px; color: var(--amber-text); font-weight: 600; margin-left: 4px; }
+.pri-p2 { font-size: 9px; color: var(--text3); font-weight: 600; margin-left: 4px; }
+.pri-p3 { font-size: 9px; color: var(--text3); font-weight: 500; margin-left: 4px; opacity: 0.7; }
+.metric-pill-muted { display: inline-block; margin-top: 4px; background: var(--bg3); color: var(--text3); border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 500; }
+.metric-pill-stack { display: inline-block; margin-top: 4px; }
+
+/* DEPENDENCY GRID */
+.dep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
+.dep-card { border: 1.5px solid var(--border); border-radius: 10px; padding: 14px 16px; background: var(--bg2); }
+.dep-card .dep-h { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.dep-card ul { list-style: none; padding: 0; margin: 0; }
+.dep-card li { font-size: 12px; color: var(--text2); padding: 4px 0 4px 14px; position: relative; line-height: 1.5; }
+.dep-card li:before { content: '○'; position: absolute; left: 0; color: var(--text3); font-size: 10px; top: 5px; }
+.dep-card li b { color: var(--text); font-weight: 600; }
+
+/* CALLOUTS */
+.callout { padding: 12px 16px; border-radius: 8px; font-size: 12.5px; line-height: 1.6; margin-top: 12px; }
+.callout.info { background: var(--blue-bg); color: var(--blue-text); border-left: 3px solid var(--blue); }
+.callout.warn { background: var(--amber-bg); color: var(--amber-text); border-left: 3px solid var(--amber); }
+.callout.success { background: var(--green-bg); color: var(--green-text); border-left: 3px solid var(--green); }
+.callout b { font-weight: 600; }
+
+/* COLLAPSIBLE BUILD GANTT */
+.build-collapse { margin-top: 14px; border: 1.5px solid var(--red); border-radius: 10px; background: var(--bg2); overflow: hidden; }
+.build-collapse summary { padding: 14px 18px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--red-text); background: var(--red-bg); list-style: none; display: flex; align-items: center; gap: 10px; user-select: none; }
+.build-collapse summary::-webkit-details-marker { display: none; }
+.build-collapse summary:before { content: '▶'; font-size: 10px; color: var(--red-text); transition: transform 0.2s; display: inline-block; }
+.build-collapse[open] summary:before { transform: rotate(90deg); }
+.build-collapse summary .b-tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px; background: var(--red); color: white; letter-spacing: 0.3px; }
+.build-collapse summary .b-meta { margin-left: auto; font-size: 11px; font-weight: 500; color: var(--red-text); opacity: 0.85; }
+.build-collapse .b-body { padding: 16px 18px 18px; }
+.build-collapse .b-intro { font-size: 12.5px; color: var(--text2); line-height: 1.6; margin-bottom: 12px; }
+.build-collapse .b-callout { background: var(--amber-bg); border-left: 3px solid var(--amber); padding: 10px 14px; border-radius: 6px; font-size: 12px; color: var(--amber-text); margin-bottom: 12px; line-height: 1.6; }
+.build-collapse .b-callout b { font-weight: 600; }
+.build-collapse .b-callout ul { margin: 6px 0 0 16px; padding: 0; }
+.build-collapse .b-callout li { font-size: 11.5px; padding: 2px 0; }
+.gantt-table .phase-row.pre td { background: var(--coral-bg); color: var(--coral-text); }
+.gantt-table .phase-row.bp1 td { background: var(--amber-bg); color: var(--amber-text); }
+.gantt-table .phase-row.bp2 td { background: var(--pink-bg); color: var(--pink-text); }
+.gantt-table .phase-row.bp3 td { background: var(--red-bg); color: var(--red-text); }
+.gantt-table .bar.pre { background: var(--coral-bg); color: var(--coral-text); }
+.gantt-table .bar.bp1 { background: var(--amber-bg); color: var(--amber-text); }
+.gantt-table .bar.bp2 { background: var(--pink-bg); color: var(--pink-text); }
+.gantt-table .bar.bp3 { background: var(--red-bg); color: var(--red-text); }
+.gantt-table .bar.gate-red { background: var(--red); color: white; font-weight: 600; }
+.gantt-table .bar.qa-red { background: var(--bg3); color: var(--red-text); font-weight: 500; }
+.build-status-box { margin-top: 14px; padding: 12px 16px; background: var(--red-bg); border-left: 3px solid var(--red); border-radius: 6px; font-size: 12.5px; color: var(--red-text); line-height: 1.6; }
+.build-status-box b { font-weight: 600; }
+
+/* FOOTER */
+.footer { margin-top: 40px; padding-top: 18px; border-top: 1.5px solid var(--border); font-size: 11px; color: var(--text3); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.legend-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 11px; color: var(--text3); margin-top: 10px; }
+.legend-row .lg { display: inline-flex; align-items: center; gap: 5px; }
+.legend-row .sw { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+
+@media (max-width: 768px) {
+  body { padding: 20px 14px; }
+  .header h1 { font-size: 21px; }
+  .headline-cards { grid-template-columns: repeat(2, 1fr); }
+  .problem-grid, .stack-grid, .status-compare, .verdict-block, .dep-grid { grid-template-columns: 1fr; }
+  .nsm-grid { grid-template-columns: 1fr; }
+  .phase-chevrons { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>KPay Martech CDP — Kick-off Pre-read</h1>
+  <div class="sub">Updated Jun 8, 2026 · Kick-off pre-read · Revised after pre-kickoff alignment (Jun 8) · Owner: Martech PM, Digital Growth</div>
+  <!-- HIGH-LEVEL OBJECTIVES -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+    <div style="background:var(--green-bg);border:2px solid var(--green);border-radius:10px;padding:14px 18px">
+      <div style="font-size:10px;font-weight:700;color:var(--green-text);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">🎯 POC — Phase 0/1 · Jun–Oct 2026</div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">Prove we can track a merchant from ad click to first transaction</div>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--green);font-weight:700">✓</span>Fix taxonomy, compliance, and identity model before CDP is touched (Phase 0)</li>
+        <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--green);font-weight:700">✓</span>Stitch merchant identity in Amplitude via a stable unique ID — defined by Product + Data</li>
+        <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--green);font-weight:700">✓</span>Measure <b>merchant activation rate by channel</b> — % first txn in M+1 (Lagging)</li>
+        <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--green);font-weight:700">✓</span>Measure <b>MQL → SQL conversion rate by channel</b> — lead quality in days (Leading)</li>
+        <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--green);font-weight:700">✓</span>T+1 batch ingestion · <b>Measure only</b> — no automation in POC scope</li>
+      </ul>
+    </div>
+    <div style="background:var(--blue-bg);border:2px solid var(--blue);border-radius:10px;padding:14px 18px">
+      <div style="font-size:10px;font-weight:700;color:var(--blue-text);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">🚀 Phase 2 — Activation &amp; Automation · Oct–Dec 2026</div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">Close the attribution loop — campaign spend to GPV impact</div>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--blue);font-weight:700">✓</span>Full E2E attribution live — campaign → MQL → SQL → KYB → activation</li>
+        <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--blue);font-weight:700">✓</span>ICP-filtered audiences synced to Meta / Google ad platforms</li>
+        <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--blue);font-weight:700">✓</span><b>CAC payback period by channel</b> — first time this number is measurable</li>
+        <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--blue);font-weight:700">✓</span><b>GPV per activated merchant by cohort</b> — 30/60/90d read</li>
+        <li style="font-size:12px;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.55"><span style="position:absolute;left:2px;color:var(--blue);font-weight:700">✓</span>Drop-off automation + retention lifecycle — CEP campaigns live</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="headline-cards">
+    <div class="hc accent">
+      <div class="val">Amplitude ✓</div>
+      <div class="lbl">Vendor selected · Growth plan · pending leadership sign-off</div>
+    </div>
+
+    <div class="hc">
+      <div class="val">Jun 12 · Kick-off</div>
+      <div class="lbl">Delivery commitment + cross-team alignment — the POC is the proof Martin needs. POC build starts August.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VENDOR EVALUATION + ONEID GATE -->
+<div class="section">
+  <div class="s-title"><span class="s-num" style="background:var(--teal-bg);color:var(--teal-text)">00</span>Programme status &amp; critical gate</div>
+  <div class="s-sub">Pre-read for the Jun 12 kick-off (delivery commitment + cross-team alignment). Vendor already selected — Amplitude (full rationale in the CDP Vendor Evaluation Report). This section: what changed since v1.1, and the One ID gate that conditions the whole timeline.</div>
+
+  <!-- What changed v1.1 -> v1.3 -->
+  <div style="background:var(--amber-bg);border:2px solid var(--amber);border-radius:10px;padding:16px 20px;margin-bottom:16px">
+    <div style="font-size:13px;font-weight:700;color:var(--amber-text);margin-bottom:8px">🔄 Pre-kickoff alignment — synthesised from sessions with Product (Teresa, Melanie), Engineering &amp; Data (Kai, Benjamin, and the Data team), and DG (Patrick, Jervis)</div>
+    <ul style="font-size:12px;color:var(--text2);line-height:1.85;padding-left:16px;margin:0">
+      <li><strong>① Identity — full One ID not needed for the POC.</strong> The full One ID is AFP-first (HK = Phase 2+) and the current SID is outlet-level, so it is not the POC key. <b>Product + Data must first define the unique identifier</b> to map into the CDP before ingestion. Once defined, that identifier + event schema map into Amplitude and the CDP stitches identity. The dependency is the teams agreeing that key — not a One ID reprioritisation.</li>
+      <li><strong>② Acquisition vs Lifecycle is now an open strategic decision.</strong> Leadership has asked whether both can run in parallel; the working view is lifecycle may be the bigger GPV pie (HK: ~70k merchants, only ~low-20k active → 2/3 dormant). Business case (with Rachel) decides priority — see §03.</li>
+      <li><strong>③ Definitions diverge by market</strong> (HK activation = first txn; SG = 5 txns) and need a named owner + leadership sign-off. Full definition pack to be proposed, baselined off RevOps (Martin Yam) / finance — see §10.</li>
+      <li><strong>④ Jun 12 is the kick-off — a delivery commitment <em>and</em> a cross-team alignment.</strong> Martin's conditional GO means the POC is the proof; Jun 12 locks owners + open items and starts the clock. POC build runs from August. Dev-timeline (6–8 wk) commitment is owned by the dev owner (Kai), not Martech.</li>
+    </ul>
+    <div style="font-size:11px;color:var(--amber-text);margin-top:8px"><strong>⚠ Scope contradiction to resolve:</strong> this doc = "HK DMO leads"; Roadmap v3 = "DMO + Sales Lead"; Lark POC = "DMO first, Sales-led Phase 2." Pick one deliberately before Friday — the dormant-book push may favour Sales-led in Phase 1.</div>
+  </div>
+
+  <!-- OneID Gate -->
+  <div style="background:var(--amber-bg);border:2px solid var(--amber);border-radius:10px;padding:16px 20px;display:flex;align-items:flex-start;gap:14px">
+    <div style="font-size:28px;flex-shrink:0">🪪</div>
+    <div style="width:100%">
+      <div style="font-size:14px;font-weight:700;color:var(--amber-text);margin-bottom:8px">KEY DEPENDENCY — Merchant identity for the POC (stitched in the CDP via a stable unique ID)</div>
+      <div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:6px">What the POC actually needs (achievable now):</div>
+      <ul style="font-size:12px;color:var(--text2);line-height:1.8;padding-left:16px;margin-bottom:10px">
+        <li>A <strong>stable unique identifier — to be defined by Product + Data</strong> — plus the event schema, mapped into Amplitude</li>
+        <li>The CDP <strong>stitches a unified merchant identity itself</strong> from that key — no full Merchant One ID build required</li>
+        <li>Data can be <strong>T+1 batch</strong> (not real-time) — confirmed acceptable, which lowers the engineering ask</li>
+      </ul>
+      <div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:6px">What stays Phase 2+ (full One ID):</div>
+      <ul style="font-size:12px;color:var(--text2);line-height:1.8;padding-left:16px;margin-bottom:10px">
+        <li>Full cross-platform resolution (app + POS + CRM) and the 360° merchant profile — built on the AFP version first, extended to HK later</li>
+      </ul>
+      <div style="background:var(--bg);border-radius:6px;padding:10px 12px;font-size:11px;color:var(--amber-text);line-height:1.6">
+        <strong>What's needed from the team:</strong> Product + Data first <strong>define</strong> the unique identifier (the right key is not yet decided), then supply it + the event schema per lifecycle stage. This is a working-team item — <strong>not a One ID reprioritisation</strong>.<br><br><strong>Risk:</strong> if Product + Data can't agree a stable unique key by ~mid-August, merchant-level tracking — and the 30-day retention read — is degraded.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DATA LATENCY CLARIFICATION -->
+<div style="background:var(--blue-bg);border:1.5px solid var(--blue);border-radius:10px;padding:14px 18px;margin-top:14px;margin-bottom:4px">
+  <div style="font-size:13px;font-weight:700;color:var(--blue-text);margin-bottom:8px">⏱ Data latency — batch vs real-time (for Engineering)</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:4px">
+    <div style="background:var(--bg);border-radius:8px;padding:10px 12px;border-left:3px solid var(--green)">
+      <div style="font-size:10px;font-weight:700;color:var(--green-text);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px">POC — Phase 0/1</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6"><b style="color:var(--text)">T+1 batch</b> — confirmed acceptable. Warehouse → CDP daily sync is sufficient for acquisition → activation tracking. Real-time is <em>not</em> a POC requirement.</div>
+    </div>
+    <div style="background:var(--bg);border-radius:8px;padding:10px 12px;border-left:3px solid var(--amber)">
+      <div style="font-size:10px;font-weight:700;color:var(--amber-text);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px">CDP → CEP sync</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6"><b style="color:var(--text)">Near real-time</b> — Amplitude's native connector to CEP handles segment sync. Vendor-managed, <em>not</em> a custom pipeline build.</div>
+    </div>
+    <div style="background:var(--bg);border-radius:8px;padding:10px 12px;border-left:3px solid var(--purple)">
+      <div style="font-size:10px;font-weight:700;color:var(--purple-text);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px">KPOS → CDP — Phase 2+</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6"><b style="color:var(--text)">Real-time (server-side API)</b> — highest complexity, ~2–3 wks engineering effort. <em>Not in POC scope.</em> Phase 2 once batch pipeline is proven.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: THE PROBLEM -->
+<div class="section">
+  <div class="s-title"><span class="s-num">01</span>The problem we're solving</div>
+  <div class="s-sub">Digital Growth cannot answer four basic questions today. Every acquisition and lifecycle decision depends on them.</div>
+  <div class="problem-grid">
+    <div class="prob-card">
+      <span class="q-num">Q1</span>
+      <div class="q-title">Which merchants are worth acquiring?</div>
+      <div class="q-state">No unified merchant identity across web, app, CRM, and payments. The same merchant appears as multiple disconnected records.</div>
+      <div class="q-cost"><b>Cost:</b><ul><li>Acquisition decisions on intuition</li><li>ICP targeting impossible</li><li>Ad spend wasted on merchants who never activate</li></ul></div>
+    </div>
+    <div class="prob-card">
+      <span class="q-num">Q2</span>
+      <div class="q-title">What does it cost to acquire them?</div>
+      <div class="q-state">Attribution stops at form submission. KYB, activation, and first-transaction data are permanently invisible to Digital Growth.</div>
+      <div class="q-cost"><b>Cost:</b><ul><li>CAC Payback cannot be measured</li><li>Marketing optimises for lead volume, not merchant quality</li><li>Ayden launches with zero attribution</li></ul></div>
+    </div>
+    <div class="prob-card">
+      <span class="q-num">Q3</span>
+      <div class="q-title">Is lifecycle spend working?</div>
+      <div class="q-state">HubSpot is email-only — no push, no in-app, no WhatsApp. Portal and app interactions invisible to marketing. Churn intervention is reactive.</div>
+      <div class="q-cost"><b>Cost:</b><ul><li>Retention interventions arrive too late</li><li>Multi-channel lifecycle structurally impossible</li><li>Re-engagement is guesswork</li></ul></div>
+    </div>
+    <div class="prob-card">
+      <span class="q-num">Q4</span>
+      <div class="q-title">How fast can marketing actually move?</div>
+      <div class="q-state">Every audience segment requires a Data team ticket. Turnaround &gt;5 days, often 1–2 sprints. 40–75 hrs/week lost to manual reconciliation.</div>
+      <div class="q-cost"><b>Cost:</b><ul><li>Slower to market than competitors</li><li>Rapid-response campaigns impossible</li><li>Execution speed capped by engineering availability</li></ul></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: RECOMMENDED STACK -->
+<div class="section">
+  <div class="s-title"><span class="s-num">02</span>Recommended stack — CDP + CEP</div>
+  <div class="s-sub">Two tools that close the loop from campaign spend to GPV impact. CDP decides <i>who</i> to target. CEP decides <i>when, on which channel, with what content</i>.</div>
+  <div class="stack-grid">
+    <div class="stack-card cdp">
+      <div class="layer-tag">Intelligence layer</div>
+      <div class="layer-name">Customer Data Platform (CDP)</div>
+      <ul>
+        <li><b>Identity resolution</b> — unified merchant ID across web, app, CRM, payments</li>
+        <li><b>AI audience segmentation</b> — ICP-filtered cohorts, predictive churn, LTV scoring</li>
+        <li><b>Multi-touch attribution</b> — campaign source through first transaction</li>
+        <li><b>Ask CDP</b> — natural-language campaign analysis, no SQL required</li>
+        <li><b>Experiment</b> — A/B testing on audiences and onboarding flows</li>
+        <li><b>Govern</b> — schema enforcement, RBAC, PII masking, consent</li>
+        <li><b>Warehouse-native</b> — bidirectional sync with Redshift</li>
+      </ul>
+    </div>
+    <div class="stack-card cep">
+      <div class="layer-tag">Activation layer</div>
+      <div class="layer-name">Customer Engagement Platform (CEP)</div>
+      <ul>
+        <li><b>Push notifications</b> — merchant app (iOS + Android)</li>
+        <li><b>In-app messaging</b> — merchant portal behavioural triggers</li>
+        <li><b>Email</b> — lifecycle journeys replacing HubSpot Marketing Hub</li>
+        <li><b>WhatsApp</b> — HK CS pilot + merchant activation nudges</li>
+        <li><b>SMS</b> — onboarding sequences and alerts</li>
+        <li><b>Sherpa AI</b> — send-time, channel, content optimisation per merchant</li>
+        <li><b>Flows</b> — visual journey builder, marketer self-serve</li>
+      </ul>
+    </div>
+  </div>
+  <div class="flow-note"><b>Native CDP → CEP connector.</b> Real-time segment sync. Campaign results flow back into CDP for measurement. No custom middleware. Every campaign decision is measurable end-to-end.</div>
+</div>
+
+<!-- SECTION 3: COMMERCIAL OUTCOMES -->
+<div class="section">
+  <div class="s-title"><span class="s-num">03</span>Commercial outcomes unlocked</div>
+  <div class="s-sub">Every capability ladders up to one North Star. Supporting metrics in the table are the levers that move it. Proof points anchored to comparable fintech deployments.</div>
+
+  <!-- OPEN STRATEGIC DECISION: acquisition vs lifecycle (Jun 8) -->
+  <div style="background:var(--purple-bg);border:2px solid var(--purple);border-radius:10px;padding:16px 20px;margin:4px 0 16px">
+    <div style="font-size:13px;font-weight:700;color:var(--purple-text);margin-bottom:8px">⚖️ Open strategic decision — Acquisition vs Lifecycle (raised Jun 8)</div>
+    <div style="font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:8px">This roadmap is currently <strong>acquisition-first</strong> (North Star = CAC Payback; lifecycle deferred to Phase 2). Leadership has asked whether acquisition and lifecycle can run <strong>in parallel</strong>; the working view is that <strong>lifecycle is the larger GPV opportunity</strong>:</div>
+    <ul style="font-size:12px;color:var(--text2);line-height:1.85;padding-left:16px;margin:0 0 8px">
+      <li><strong>Dormant book is the pie:</strong> HK has ~70,000 merchants but only ~low-20,000 active — <strong>~2/3 are dormant.</strong> Reactivation may beat net-new acquisition on GPV.</li>
+      <li><strong>Decision mechanism:</strong> business-case acquisition pie vs lifecycle pie <strong>with Rachel</strong>; let the math set priority if both can't run together.</li>
+      <li><strong>Feasibility:</strong> parallel is possible but high-effort and hinges on heavy data-team collaboration + first-touchpoint data quality.</li>
+      <li><strong>Why engagement is out of the POC:</strong> sending nudges / win-back needs a CEP (Phase 2) plus resolved identity and contactability — none are in place in Phase 1. So the POC <b>tracks</b> the lifecycle end-to-end (through activation) but does not <b>act</b> on it.</li>
+    </ul>
+    <div style="font-size:11px;color:var(--purple-text)"><strong>Status:</strong> Phase 1 = <strong>acquisition → activation</strong>; retention is instrumented now and measured in Phase 2 (deferred, not dropped). See retention feasibility below.</div>
+  </div>
+
+  <!-- Retention feasibility -->
+  <div style="background:var(--teal-bg);border:2px solid var(--teal);border-radius:10px;padding:16px 20px;margin:4px 0 16px">
+    <div style="font-size:13px;font-weight:700;color:var(--teal-text);margin-bottom:8px">🔬 End-to-end tracking &amp; retention — feasible, deliberately Phase 2</div>
+    <ul style="font-size:12px;color:var(--text2);line-height:1.85;padding-left:16px;margin:0">
+      <li>We <b>instrument the full lifecycle now</b> (through retention), so end-to-end tracking is built in from Phase 1 — nothing needs re-instrumenting later.</li>
+      <li><b>Phase 1 proves activation; retention is measured in Phase 2</b> — deferred, not dropped.</li>
+      <li><b>Trade-off (why not Phase 1):</b> committing retention to the POC ties its success to One ID (AFP-only today), gives only a thin 30-day read on the early cohort, and pulls data-team effort off the acquisition → activation proof.</li>
+      <li><b>Risk if forced into Phase 1:</b> if One ID slips, retention fails and the POC is judged on a metric it couldn't safely deliver.</li>
+      <li><b>Feasible in Phase 2 once:</b> Alive / Lapsed / Ghost states locked (defined in Phase 1) + enough elapsed data + One ID + a messaging tool (CEP).</li>
+    </ul>
+  </div>
+
+  <!-- Phase 1 scope boundary -->
+  <div style="background:var(--bg2);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:8px;padding:14px 18px;margin:4px 0 16px">
+    <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px">🚧 Phase 1 scope boundary — measure, don't act</div>
+    <div style="font-size:12px;color:var(--text2);line-height:1.7">Phase 1 is <b>measurement &amp; tracking only</b> — acquisition → activation <i>insight</i>. <b>Engagement / automation is explicitly OUT of Phase 1</b> — sending nudges, win-back and drop-off campaigns need the CEP and land in <b>Phase 2</b>. We <b>measure</b> the merchant lifecycle in Phase 1; we <b>act</b> on it in Phase 2.</div>
+  </div>
+
+  <!-- NSM Framework block -->
+  <div class="nsm-block">
+    <!-- Row 1: North Star + Guardrails + Trade-offs -->
+    <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:10px;align-items:start">
+      <div class="nsm-card nsm-north">
+        <div class="nsm-tag">North Star</div>
+        <div class="nsm-metric">CAC Payback Period <span class="nsm-unit">(months, by channel)</span></div>
+        <div class="nsm-desc">The one number that converts acquisition cost and merchant GPV into a single channel-allocation decision. Requires P1 metrics before it's calculable.<br><br><b>POC proof point (P0):</b> Activation rate by channel + MQL→SQL conversion rate — both measurable within 12 weeks.</div>
+      </div>
+      <div class="nsm-card nsm-guard">
+        <div class="nsm-tag">Guardrails / Counter</div>
+        <ul>
+          <li><b>Data quality</b> — schema enforcement, &lt;5% null on identity fields</li>
+          <li><b>Data hygiene &amp; compliance</b> — governance approved; legal contract + SLA pending.</li>
+          <li><b>Attribution coverage</b> — ≥80% of HK DMO leads traceable end-to-end.</li>
+          <li><b>Lifecycle suppression</b> — no merchant receives &gt;3 nudges/week</li>
+        </ul>
+      </div>
+      <div class="nsm-card nsm-trade">
+        <div class="nsm-tag">Explicit trade-offs</div>
+        <ul>
+          <li>Not optimising for <b>raw lead volume</b> — quality over quantity</li>
+          <li>Accepting <b>vendor lock-in</b> to ship in 12 weeks vs 12 months</li>
+          <li>Deferring <b>full multi-touch algorithmic attribution</b> to Phase 3</li>
+          <li>Phase 1 scope = HK only; AU / JP follow later (TBC)</li>
+          <li>Phase 1 = <b>measure, not act</b> — engagement / automation is Phase 2</li>
+          <li>Retention = early <b>30-day read</b> only, conditional on identity</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Row 2: Supporting Metrics — phases left→right -->
+    <div style="border:1.5px solid var(--teal);border-radius:10px;padding:14px 16px;background:var(--teal-bg);margin-top:10px">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--teal-text);margin-bottom:10px">Supporting metrics by phase</div>
+      <div style="display:grid;grid-template-columns:1fr 1.6fr 1.6fr;gap:10px">
+        <!-- P0 -->
+        <div style="background:var(--red-bg);border-radius:8px;padding:10px 12px;border-top:3px solid var(--red)">
+          <div style="font-size:9px;font-weight:700;color:var(--red-text);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">P0 — POC focus (Phase 0/1)</div>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li style="font-size:11.5px;color:var(--text2);padding:3px 0 3px 12px;position:relative;line-height:1.5"><span style="position:absolute;left:0;color:var(--red-text);font-weight:700">·</span><b class="p0-tag">P0</b> <b>Merchant activation rate by channel</b> — % first txn in M+1 (Lagging)</li>
+            <li style="font-size:11.5px;color:var(--text2);padding:3px 0 3px 12px;position:relative;line-height:1.5"><span style="position:absolute;left:0;color:var(--red-text);font-weight:700">·</span><b class="p0-tag">P0</b> <b>MQL → SQL conversion rate by channel</b> — lead quality signal in days (Leading)</li>
+          </ul>
+        </div>
+        <!-- P1 = Phase 2 -->
+        <div style="background:var(--amber-bg);border-radius:8px;padding:10px 12px;border-top:3px solid var(--amber)">
+          <div style="font-size:9px;font-weight:700;color:var(--amber-text);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">P1 — Phase 2 (post-POC · Oct–Dec)</div>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li style="font-size:11.5px;color:var(--text2);padding:3px 0 3px 12px;position:relative;line-height:1.5"><span style="position:absolute;left:0;color:var(--amber-text);font-weight:700">·</span><b class="p1-tag">P1</b> <b>% HK DMO leads with E2E attribution</b> — campaign → activation (Lagging)</li>
+            <li style="font-size:11.5px;color:var(--text2);padding:3px 0 3px 12px;position:relative;line-height:1.5"><span style="position:absolute;left:0;color:var(--amber-text);font-weight:700">·</span><b class="p1-tag">P1</b> <b>ICP match rate at lead capture</b> — % above ICP threshold at entry (Leading)</li>
+            <li style="font-size:11.5px;color:var(--text2);padding:3px 0 3px 12px;position:relative;line-height:1.5"><span style="position:absolute;left:0;color:var(--amber-text);font-weight:700">·</span><b class="p1-tag">P1</b> <b>GPV per activated merchant by cohort</b> — 30/60/90d post-activation (Lagging)</li>
+            <li style="font-size:11.5px;color:var(--text2);padding:3px 0 3px 12px;position:relative;line-height:1.5"><span style="position:absolute;left:0;color:var(--amber-text);font-weight:700">·</span><b class="p1-tag">P1</b> <b>CAC payback period by channel</b> (Lagging)</li>
+          </ul>
+        </div>
+        <!-- P2/P3 = Phase 3+ -->
+        <div style="background:var(--bg3);border-radius:8px;padding:10px 12px;border-top:3px solid var(--text3)">
+          <div style="font-size:9px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">P2/P3 — Phase 3+ (Jan 2027 onwards)</div>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li style="font-size:11.5px;color:var(--text2);padding:3px 0 3px 12px;position:relative;line-height:1.5"><span style="position:absolute;left:0;color:var(--text3);font-weight:700">·</span><b class="p2-tag">P2</b> <b>DMO stage completion + drop-off</b> (Leading)</li>
+            <li style="font-size:11.5px;color:var(--text2);padding:3px 0 3px 12px;position:relative;line-height:1.5"><span style="position:absolute;left:0;color:var(--text3);font-weight:700">·</span><b class="p2-tag">P2</b> <b>Merchant signings by source</b> (Lagging)</li>
+            <li style="font-size:11.5px;color:var(--text2);padding:3px 0 3px 12px;position:relative;line-height:1.5"><span style="position:absolute;left:0;color:var(--text3);font-weight:700">·</span><b class="p2-tag">P2</b> <b>Time-to-first-transaction</b> (Leading)</li>
+            <li style="font-size:11.5px;color:var(--text2);padding:3px 0 3px 12px;position:relative;line-height:1.5"><span style="position:absolute;left:0;color:var(--text3);font-weight:700">·</span><b class="p2-tag">P2</b> <b>Retention rate (Alive %) — 30/60/90d</b> (Lagging)</li>
+            <li style="font-size:11.5px;color:var(--text2);padding:3px 0 3px 12px;position:relative;line-height:1.5"><span style="position:absolute;left:0;color:var(--text3);font-weight:700">·</span><b class="p2-tag">P3</b> <b>Marketing-influenced vs sales signings</b> (Lagging)</li>
+            <li style="font-size:11.5px;color:var(--text2);padding:3px 0 3px 12px;position:relative;line-height:1.5"><span style="position:absolute;left:0;color:var(--text3);font-weight:700">·</span><b class="p2-tag">P3</b> <b>Campaign-to-activation latency</b> — target &lt;7 days (Operational)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="outcomes-table">
+    <thead>
+      <tr><th>Outcome</th><th>How CDP + CEP delivers it</th><th>Supporting metric</th><th>Fintech proof point</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="outcome-name">Lower CAC</td>
+        <td>CDP ICP-filtered audiences sync to Meta/Google. Spend only against merchants matching high-LTV profile. Attribution closes loop campaign → first transaction.</td>
+        <td class="metric">
+          <span class="metric-pill">Merchant activation rate by channel</span><span class="pri-p0">P0</span><br>
+          <span class="metric-pill metric-pill-stack">MQL → SQL conversion rate by channel</span><span class="pri-p0">P0</span><br>
+          <span class="metric-pill metric-pill-stack">CAC payback period by channel</span><span class="pri-p1">P1</span>
+        </td>
+        <td class="proof"><b>Allergan</b> (B2B2C via Segment): 41% CPA reduction. <b>Domino's:</b> 65% CPA decrease, 700% ROAS lift.</td>
+      </tr>
+      <tr>
+        <td class="outcome-name">Faster activation</td>
+        <td>CEP behavioural triggers fire on DMO drop-off. Push or WhatsApp nudge reaches merchant within minutes. CDP measures time-to-first-transaction per cohort.</td>
+        <td class="metric">
+          <span class="metric-pill">DMO stage completion + drop-off</span><span class="pri-p2">P2</span><br>
+          <span class="metric-pill metric-pill-stack">Time-to-first-transaction</span><span class="pri-p2">P2</span>
+        </td>
+        <td class="proof"><b>Salt Bank:</b> 80% activation boost on identical account-open → first-transaction gap. <b>Jupiter Money:</b> 80% reduction in KYC step time.</td>
+      </tr>
+      <tr>
+        <td class="outcome-name">Higher merchant LTV</td>
+        <td>CDP Predictive Cohorts flag at-risk merchants 30 days before churn. CEP re-engagement sequence fires automatically. CDP measures retention lift + GPV sustained per cohort.</td>
+        <td class="metric">
+          <span class="metric-pill">GPV per activated merchant by cohort</span><span class="pri-p1">P1</span><br>
+          <span class="metric-pill-muted">Retention rate — Phase 2, pending Finance methodology</span>
+        </td>
+        <td class="proof"><b>Scripbox</b> (financial services): +246% first-time investments, +22% revenue from new users, –20% marketing cost.</td>
+      </tr>
+      <tr>
+        <td class="outcome-name">Multi-product revenue</td>
+        <td>CDP propensity model (pay-in + high GPV + tenure &gt;6mo) → CEP cross-sell trigger to next-best KPay product → CDP measures campaign-to-adoption rate.</td>
+        <td class="metric">
+          <span class="metric-pill-muted">Phase 2 — metric TBD</span><br>
+          <span style="font-size:10.5px;color:var(--text3);display:block;margin-top:4px">Cross-sell adoption rate — not yet in current measurement framework</span>
+        </td>
+        <td class="proof"><b>Ramp Network:</b> 30%+ improvement in transaction volume and conversion using the same full-stack architecture.</td>
+      </tr>
+      <tr>
+        <td class="outcome-name">Ayden Q3 2026 launch</td>
+        <td>CDP audiences synced to Meta, Google, UK ad platforms from Day 1. Attribution instrumented before first merchant signs. CEP lifecycle automation active at launch.</td>
+        <td class="metric">
+          <span class="metric-pill">% HK DMO leads with traceable E2E attribution</span><span class="pri-p1">P1</span><br>
+          <span class="metric-pill metric-pill-stack">ICP match rate at lead capture</span><span class="pri-p1">P1</span>
+        </td>
+        <td class="proof"><b>No dark funnel.</b> Every UK/CA/EU acquisition cost measurable from the start — unlike HK/SG where attribution was built after the fact.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 5: IMPLEMENTATION ROADMAP -->
+<div class="section">
+  <div class="s-title"><span class="s-num">05</span>Implementation roadmap — phased approach</div>
+  <div class="s-sub">Each phase progressively unlocks value, starting with data integrity and moving toward advanced intelligence and regional scale. Tightly aligned with DMO (Digital Merchant Onboarding).</div>
+  <div class="principle"><b>Principle:</b> Foundation → Attribution → Activation → Intelligence → Scale</div>
+  <div class="phase-chevrons">
+    <div class="phase-chev p0">
+      <div class="ph-num">Phase 0</div>
+      <div class="ph-title">Foundation (Pre-POC)</div>
+      <div class="ph-when">Jun – Jul 2026</div>
+      <div class="ph-desc">Fix data, compliance, and identity before any CDP is touched.</div>
+    </div>
+    <div class="phase-chev p1">
+      <div class="ph-num">Phase 1</div>
+      <div class="ph-title">HK Pilot (POC)</div>
+      <div class="ph-when">Aug – Oct 2026</div>
+      <div class="ph-desc">Acquisition → Activation tracking in HK; retention instrumented for Phase 2.</div>
+    </div>
+    <div class="phase-chev p2">
+      <div class="ph-num">Phase 2</div>
+      <div class="ph-title">Activation & Automation</div>
+      <div class="ph-when">Oct – Dec 2026</div>
+      <div class="ph-desc">Turn data into growth actions — retention, drop-off automation, cohort segmentation, multi-touch attribution.</div>
+    </div>
+    <div class="phase-chev p3">
+      <div class="ph-num">Phase 3</div>
+      <div class="ph-title">Intelligence Layer</div>
+      <div class="ph-when">Jan 2027 +</div>
+      <div class="ph-desc">Predictive models — churn, LTV, behavioural ICP, AI merchant scoring.</div>
+    </div>
+    <div class="phase-chev p3">
+      <div class="ph-num">Phase 4</div>
+      <div class="ph-title">Multi-market Scale</div>
+      <div class="ph-when">Mar 2027 +</div>
+      <div class="ph-desc">CDP scaled to other regions (AU / JP TBC).</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: IMPLEMENTATION GANTT -->
+<div class="section">
+  <div class="s-title"><span class="s-num">06</span>Implementation Gantt</div>
+  <div class="s-sub">Month-by-month workstream schedule. Phase colours match the chevrons above. <b>GO / NO-GO gates</b> shown as decision points. MerchantOneID depends on Engineering Technical Roadmap 2026 IAM.</div>
+  <div class="sprint-callout"><b>⏱ Sequencing (revised Jun 8 pre-kickoff alignment):</b> Phase 0 work (taxonomy, compliance, data model) starts now and runs through June — does not wait for OneID. Contract sign ~Aug (aligned to the identity gate). 2-week platform trial runs in parallel. <b>Jun 12 = kick-off</b> — delivery commitment + cross-team alignment (lock owners, open questions + dependencies). <b>POC build starts August.</b> <b>⚠ Identity is the thing to lock early</b> — the POC stitches identity in the CDP via a stable unique ID defined by Product + Data; the full Merchant One ID (AFP-first) is a Phase 2+ item, not a POC blocker. A timeline-compression scenario for the 6–8 wk dev window can be shown, but the &ldquo;how fast&rdquo; commitment is <b>Kai&rsquo;s (dev owner)</b>, not Martech&rsquo;s.</div>
+  <div class="gantt-wrap">
+    <table class="gantt-table">
+      <thead>
+        <tr>
+          <th class="ws-header">Workstream</th>
+          <th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th><th>Jan 27</th><th>Feb 27</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="phase-row p0"><td colspan="10">PHASE 0 · Foundation & Governance — Jun–Jul 2026 (pre-contract)</td></tr>
+        <tr>
+          <td class="ws">Event taxonomy audit + schema lock</td>
+          <td class="bar p0">●</td><td class="bar p0">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">Merchant OneID model design</td>
+          <td class="bar p0">●</td><td class="bar p0">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">CDP vendor setup</td>
+          <td class="bar p0">●</td><td class="bar p0">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">Compliance &amp; legal vendor approval<div class="ws-note">KPay compliance + legal team review of Amplitude DPA, data handling terms, and residency. Aligned with Amplitude team before contract.</div></td>
+          <td class="bar p0">●</td><td class="bar p0">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">CEP evaluation — Phase 2+ only (HubSpot stays as interim)<div class="ws-note">Gated on 5 conditions: HubSpot scale limits proven, deliverability risk structural, MoEngage a better fit, CDP live, no overlap.</div></td>
+          <td class="bar p0">●</td><td class="bar p0">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">E2E lifecycle attribution planning — 1 pilot use case</td>
+          <td class="bar p0">●</td><td class="bar p0">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">Data masking + PII compliance layer<div class="ws-note">Hash email/phone, pseudonymise merchant ID, exclude GPV until DPA. Required before any data enters Amplitude.</div></td>
+          <td class="bar p0">●</td><td class="bar p0">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">→ Phase 0 POC completion (CDP 1 pilot use case)</td>
+          <td></td><td class="bar gate">⚠ GO/NO-GO</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr style="background:var(--red-bg)">
+          <td class="ws" style="background:var(--red-bg);color:var(--red-text);font-size:11px"><strong>Phase 0 exit gate</strong><div class="ws-note" style="color:var(--red-text)">Must clear all before Phase 1 starts</div></td>
+          <td colspan="9" style="padding:8px 14px;font-size:11px;color:var(--red-text);vertical-align:top">
+            <ul style="list-style:none;padding:0;margin:0;line-height:2">
+              <li>⛔ Event taxonomy locked and published as governance contract — requires schema lock workshop with <strong>Teresa</strong> (DMO/KConnect/loyalty context) + <strong>Wendy</strong> (DMO tracking) + <strong>Rachel</strong> (HubSpot/CRM) before instrumentation begins</li>
+              <li>⛔ Unique identifier for the POC defined (Product + Data) and mapped into CDP — CDP stitches identity; full Merchant One ID is Phase 2+</li>
+              <li>⛔ Legal &amp; Compliance — two approvals: (1) Amplitude platform (2) event-taxonomy data ingestion (Jonas/Natalie + Rex)</li><li>⛔ PII masking layer live — hash email/phone, pseudonymise merchant ID, exclude GPV until DPA (no raw PII into Amplitude)</li>
+              <li>⛔ Commercial sign-off secured — leadership</li>
+              <li>⛔ Data team capacity committed — JieHuan ring-fenced for Phase 1 pipeline work</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr class="phase-row p1"><td colspan="10">PHASE 1 · CDP Analytics + Attribution — Aug–Sep 2026 (POC; readout end-Sep)</td></tr>
+        <tr>
+          <td class="ws">Unique identifier → CDP (Product + Data define; CDP stitches)<div class="ws-note">Stable key (e.g. composite / email); full One ID is Phase 2+. ~1–2 wks. Parallel.</div></td>
+          <td></td><td></td><td class="bar p1">● parallel instrumentation</td><td class="bar p1">●</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">KPOS (Hive terminals) → CDP (real-time)<div class="ws-note">Server-side API. Highest complexity. ~2–3 wks.</div></td>
+          <td></td><td></td><td class="bar p1">● parallel instrumentation</td><td class="bar qa">QA</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">KConnect → CDP (operational events)<div class="ws-note">Merchant, order, loyalty events. ~1–2 wks.</div></td>
+          <td></td><td></td><td class="bar p1">● parallel instrumentation</td><td class="bar p1">●</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">DMO lifecycle reporting / insight</td>
+          <td></td><td></td><td class="bar p1">●</td><td class="bar p1">●</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">HK CDP — Phase 1 implementation + merchant audience profile v1</td>
+          <td></td><td></td><td class="bar p1">●</td><td class="bar p1">●</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">→ Phase 1 GO / NO-GO</td>
+          <td></td><td></td><td></td><td class="bar gate">⚠ GO/NO-GO</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr style="background:var(--red-bg)">
+          <td class="ws" style="background:var(--red-bg);color:var(--red-text);font-size:11px"><strong>Phase 1 exit gate</strong><div class="ws-note" style="color:var(--red-text)">Must clear all before Phase 2 starts</div></td>
+          <td colspan="9" style="padding:8px 14px;font-size:11px;color:var(--red-text);vertical-align:top">
+            <ul style="list-style:none;padding:0;margin:0;line-height:2">
+              <li>⛔ Merchant identity stitched in CDP via the unique key (full One ID is Phase 2+)</li>
+              <li>⛔ E2E lifecycle trackable: Awareness → Acquisition → Activation (first txn, M+1)</li>
+              <li>⛔ DMO funnel measurable by product type (POS / TTP / Standalone); ICP profile definable per region</li>
+              <li>⛔ First &amp; last touchpoint attributable per merchant — attribution coverage ≥ 80% of HK DMO leads</li>
+              <li>⛔ CAC measurable (blended, leads-based — per RevOps / Martin Yam formula)</li>
+              <li>⛔ Amplitude data validated within ±10% of Sensor baseline (HK)</li>
+              <li>⛔ DG self-serves a segment / cohort without an engineering ticket (proves CDP self-serve value)</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr class="phase-row p2"><td colspan="10">PHASE 2 · Activation + Lifecycle + CEP — Oct–Dec 2026 (CEP gated on 5 conditions)</td></tr>
+        <tr>
+          <td class="ws">CEP migration (HubSpot → CEP)<div class="ws-note">Only after 5 conditions met. HubSpot stays as interim activation layer until conditions confirmed.</div></td>
+          <td></td><td></td><td></td><td></td><td class="bar p2">●</td><td class="bar p2">●</td><td class="bar p2">●</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">Phase 2 — activation automation, lifecycle automation, multi-touch attribution</td>
+          <td></td><td></td><td></td><td></td><td class="bar p2">●</td><td class="bar p2">●</td><td class="bar p2">●</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">Channel integrations + ad sync</td>
+          <td></td><td></td><td></td><td></td><td class="bar p2">●</td><td class="bar p2">●</td><td class="bar p2">●</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="ws">2–3 end-to-end lifecycle visibility use cases shipped</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td class="bar gate">⚠ GO/NO-GO</td><td></td><td></td>
+        </tr>
+        <tr style="background:var(--red-bg)">
+          <td class="ws" style="background:var(--red-bg);color:var(--red-text);font-size:11px"><strong>Phase 2 exit gate</strong><div class="ws-note" style="color:var(--red-text)">Must clear all before Phase 3 starts</div></td>
+          <td colspan="9" style="padding:8px 14px;font-size:11px;color:var(--red-text);vertical-align:top">
+            <ul style="list-style:none;padding:0;margin:0;line-height:2">
+              <li>⛔ Multi-channel lifecycle live — email + push + WhatsApp + in-app</li>
+              <li>⛔ CAC Payback methodology approved by Finance — BD commission in/out decision made</li>
+              <li>⛔ CEP confirmed (MoEngage) or HubSpot retained with documented scale plan</li>
+              <li>⛔ Amplitude Enterprise vs internal ML model — business case reviewed, decision made</li>
+              <li>⛔ Phase 1–2 ROI evidenced to Finance before Phase 3 scope is approved</li>
+              <li>⛔ Next market scope confirmed — market to be determined based on business priority</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr class="phase-row p3"><td colspan="10">PHASE 3 · Intelligence Layer — Predictive Models — Jan 2027 +</td></tr>
+        <tr>
+          <td class="ws">Intelligence layer — churn, LTV, cLTV predictive models</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar p3">●</td><td class="bar p3">●</td>
+        </tr>
+        <tr class="phase-row p3"><td colspan="10">PHASE 4 · Multi-market Scale — Mar 2027 + (beyond this chart window · AU / JP TBC)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="legend-row">
+    <span class="lg"><span class="sw" style="background:var(--green-bg);border:1px solid var(--green)"></span> Phase 0</span>
+    <span class="lg"><span class="sw" style="background:var(--blue-bg);border:1px solid var(--blue)"></span> Phase 1</span>
+    <span class="lg"><span class="sw" style="background:var(--amber-bg);border:1px solid var(--amber)"></span> Phase 2</span>
+    <span class="lg"><span class="sw" style="background:var(--purple-bg);border:1px solid var(--purple)"></span> Phase 3</span>
+    <span class="lg"><span class="sw" style="background:var(--coral-bg);border:1px solid var(--coral)"></span> GO/NO-GO gate</span>
+    <span class="lg"><span class="sw" style="background:var(--bg3);border:1px solid var(--text3)"></span> QA</span>
+  </div>
+</div>
+
+<!-- SECTION 8: RESOURCES -->
+<div class="section">
+  <div class="s-title"><span class="s-num">08</span>Resource requirements</div>
+  <div class="s-sub">What the marketing-data talent does under the CDP + CEP plan — designing journeys, validating segments, and reading attribution, rather than writing SQL and waiting on engineering tickets.</div>
+  <table class="res-table">
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>What they do under the CDP + CEP plan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="role">Marketing Data Analyst</td>
+        <td class="buy"><b>1 analyst from Phase 2/3 (Sep/Oct).</b> Designs and validates CDP segments, builds attribution dashboards, monitors cohorts, runs A/B analysis. One analyst covers all 4 markets at CDP maturity. <b>20% infrastructure / 80% insight.</b></td>
+      </tr>
+      <tr>
+        <td class="role">Data Engineer (JieHuan's team)</td>
+        <td class="buy"><b>0.25–0.5 FTE (part-time).</b> Builds GPV / LTV / ICP enrichment models in Redshift, pushes via reverse ETL into CDP profiles. Focused on value-add modelling, not infrastructure plumbing.<br><b>Resourcing:</b> internal, no incremental headcount.</td>
+      </tr>
+      <tr>
+        <td class="role">Martech PM</td>
+        <td class="buy">Same on both paths. Design CDP use cases, manage vendor relationships, govern event taxonomy, lead stakeholder alignment, own AAARRR lifecycle strategy. No incremental headcount.</td>
+      </tr>
+      <tr>
+        <td class="role">UX / Interface Designer</td>
+        <td class="buy"><b>Not required as separate hire.</b> CEP UI pre-built. Merchant Portal and KPay product activations use existing product design teams for surface integration.</td>
+      </tr>
+      <tr class="total">
+        <td class="role">Net resourcing ask</td>
+        <td class="buy"><b>External analyst / data resource — TBA</b>, to be confirmed after the CDP capability assessment on Amplitude. Engineering: minimal (0.25–0.5 FTE, value-add modelling only).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- PREREQUISITES -->
+<div class="section">
+  <div class="s-title"><span class="s-num" style="background:var(--red-bg);color:var(--red-text)">P</span>Prerequisites — hard gates before the POC can start (Aug)</div>
+  <div class="s-sub">The POC cannot begin in August until these are resolved. Owners shown by department.</div>
+  <table style="width:100%;border-collapse:collapse;margin-top:6px">
+    <thead><tr>
+      <th style="border:1px solid var(--border);background:#1F3864;color:#fff;padding:9px 11px;text-align:left;font-size:11.5px;width:44%">Prerequisite task</th>
+      <th style="border:1px solid var(--border);background:#1F3864;color:#fff;padding:9px 11px;text-align:left;font-size:11.5px;width:20%">Owner (department)</th>
+      <th style="border:1px solid var(--border);background:#1F3864;color:#fff;padding:9px 11px;text-align:left;font-size:11.5px;width:22%">Status</th>
+      <th style="border:1px solid var(--border);background:#1F3864;color:#fff;padding:9px 11px;text-align:left;font-size:11.5px;width:14%">Target</th>
+    </tr></thead>
+    <tbody><tr>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:12px;color:var(--text)">Lock the POC use cases &amp; scope</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text2);white-space:nowrap">Martech · Product · DG</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:#2E7D32;font-weight:600">Confirming at the Jun 12 kick-off</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text);font-weight:600;white-space:nowrap">Jun 2026</td>
+</tr><tr>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:12px;color:var(--text)">Lock Phase 1 definitions — acquisition, activation (M+1) and retention states (Alive / Lapsed / Ghost) — and assign one owner</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text2);white-space:nowrap">Martech · DG · RevOps / Finance</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:#B26A00;font-weight:600">Drafted; needs sign-off</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text);font-weight:600;white-space:nowrap">Jul 2026</td>
+</tr><tr>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:12px;color:var(--text)">Merchant identity for the POC — Product + Data to define the unique ID + event schema into Amplitude</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text2);white-space:nowrap">Product · Data · Engineering</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:#B26A00;font-weight:600">Unique identifier to be defined by Product + Data</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text);font-weight:600;white-space:nowrap">By mid-Aug</td>
+</tr><tr>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:12px;color:var(--text)">Event taxonomy + data mapping (Merchant Lifecycle Event Tracking Plan)</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text2);white-space:nowrap">Martech · Product · Data</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:#B26A00;font-weight:600">In progress — dependent on lifecycle completion; sign off final schema by Jul</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text);font-weight:600;white-space:nowrap">Jul 2026</td>
+</tr><tr>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:12px;color:var(--text)">Data schema review + warehouse access</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text2);white-space:nowrap">Martech · Data</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:#B26A00;font-weight:600">Schema doc available; review pending</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text);font-weight:600;white-space:nowrap">Jul 2026</td>
+</tr><tr>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:12px;color:var(--text)">Data masking + PII compliance layer — mask before any data enters Amplitude</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text2);white-space:nowrap">Martech · Engineering · Legal · Compliance</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:#B26A00;font-weight:600">Masked field list defined: hash email/phone, pseudonymise merchant ID, exclude GPV until DPA</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text);font-weight:600;white-space:nowrap">31 Jul 2026</td>
+</tr><tr>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:12px;color:var(--text)">Legal &amp; Compliance sign-off — (1) Amplitude platform approval (2) event-taxonomy data-ingestion approval</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text2);white-space:nowrap">Legal (Jonas / Natalie) · Compliance (Rex)</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:#B26A00;font-weight:600">In progress — two approvals pending</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text);font-weight:600;white-space:nowrap">31 Jul 2026</td>
+</tr><tr>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:12px;color:var(--text)">Data + Product team capacity ring-fenced</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text2);white-space:nowrap">Leadership (mandate)</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:#C00000;font-weight:600">Not yet committed</td>
+<td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-size:11.5px;color:var(--text);font-weight:600;white-space:nowrap">Before kickoff (Aug)</td>
+</tr></tbody>
+  </table>
+</div>
+
+<!-- KEY DEPENDENCIES -->
+<div class="section">
+  <div class="s-title"><span class="s-num" style="background:var(--amber-bg);color:var(--amber-text)">D</span>Key Dependencies — what we need, and the backup if it's late</div>
+  <div class="s-sub">Plain-language view for all stakeholders. Phase 1 covers acquisition + activation; retention is instrumented now, measured in Phase 2. Severity: Critical = blocks the pilot · Important = causes slippage · Lower = next-phase concern.</div>
+  <table style="width:100%;border-collapse:collapse;margin-top:6px">
+    <thead><tr>
+      <th style="border:1px solid var(--border);background:#1F3864;color:#fff;padding:9px 11px;text-align:left;font-size:11.5px;width:20%">What we depend on</th>
+      <th style="border:1px solid var(--border);background:#1F3864;color:#fff;padding:9px 11px;text-align:center;font-size:11.5px;width:11%">How critical</th>
+      <th style="border:1px solid var(--border);background:#1F3864;color:#fff;padding:9px 11px;text-align:left;font-size:11.5px;width:35%">What happens if it's late</th>
+      <th style="border:1px solid var(--border);background:#1F3864;color:#fff;padding:9px 11px;text-align:left;font-size:11.5px;width:34%">Our backup plan</th>
+    </tr></thead>
+    <tbody><tr><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-weight:600;font-size:12px;color:var(--text)">Merchant identity (CDP stitches via a unique ID)</td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;text-align:center;background:#FCE4E4"><span style="font-weight:700;font-size:11.5px;color:#C00000">🔴 Critical</span></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">No stable per-merchant key in the CDP = events can't be tied to a merchant</li><li style="margin-bottom:3px">Full One ID is AFP-first &amp; outlet-level — wrong key</li></ul></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Product + Data define &amp; supply the unique key + schema; CDP stitches</li><li style="margin-bottom:3px">Fallback: composite key (biz reg + mobile)</li><li style="margin-bottom:3px">Full One ID = Phase 2+</li></ul></td></tr><tr><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-weight:600;font-size:12px;color:var(--text)">Data masking + PII compliance (before ingestion)</td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;text-align:center;background:#FCE4E4"><span style="font-weight:700;font-size:11.5px;color:#C00000">🔴 Critical</span></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Raw PII (email, phone, GPV, merchant name) can't enter Amplitude without masking</li><li style="margin-bottom:3px">Confirmed by legal — blocks the entire ingestion pipeline</li></ul></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Hash email + phone; pseudonymise merchant ID; hold GPV until DPA signed</li><li style="margin-bottom:3px">Ship the masked event schema first; expand after legal clearance</li></ul></td></tr><tr><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-weight:600;font-size:12px;color:var(--text)">Acquisition + Activation definitions &amp; data</td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;text-align:center;background:#FCE4E4"><span style="font-weight:700;font-size:11.5px;color:#C00000">🔴 Critical</span></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">No signed-off definitions = can't measure the funnel; differ by market, no owner</li><li style="margin-bottom:3px">Acquisition: lead→MQL→SQL→KYB→signing</li><li style="margin-bottom:3px">Activation: first txn (M+1)</li></ul></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Lock working definitions + one owner before POC start</li><li style="margin-bottom:3px">Confirm at readout</li></ul></td></tr><tr><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-weight:600;font-size:12px;color:var(--text)">Retention definitions &amp; data — Alive / Lapsed / Ghost</td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;text-align:center;background:#FAEEDA"><span style="font-weight:700;font-size:11.5px;color:#B26A00">🟠 Phase 2</span></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Phase 2 — not the pilot. Phase 1 proves activation; retention measured in Phase 2</li><li style="margin-bottom:3px">Definition must be specific (broad def = low-value metrics)</li><li style="margin-bottom:3px">Alive = txn ≤30d · Lapsed = activated, no txn 30d · Ghost = never transacted</li></ul></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Lock the states in Phase 1 (define now, measure Phase 2); instrument txn recency from day one</li><li style="margin-bottom:3px">Needs elapsed data + One ID + CEP to act</li></ul></td></tr><tr><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-weight:600;font-size:12px;color:var(--text)">Clear event-tracking plan</td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;text-align:center;background:#FCE4E4"><span style="font-weight:700;font-size:11.5px;color:#C00000">🔴 Critical</span></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">No agreed events = nothing clean to ingest</li></ul></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Ship a minimal acquisition-journey event set; instrument txns end-to-end; expand later</li></ul></td></tr><tr><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-weight:600;font-size:12px;color:var(--text)">Access to our merchant data</td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;text-align:center;background:#FCE4E4"><span style="font-weight:700;font-size:11.5px;color:#C00000">🔴 Critical</span></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Data must flow into the platform (sign-off + tidy structure)</li><li style="margin-bottom:3px">Blanket approvals slow it</li></ul></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">App→platform direct for the pilot; scoped, masked, time-boxed HK-DMO access</li><li style="margin-bottom:3px">T+1 batch OK (not real-time)</li></ul></td></tr><tr><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-weight:600;font-size:12px;color:var(--text)">Time from the Data &amp; Product teams</td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;text-align:center;background:#FCE4E4"><span style="font-weight:700;font-size:11.5px;color:#C00000">🔴 Critical</span></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Not on their priority list → stalls everything else</li></ul></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Needs a leadership instruction</li><li style="margin-bottom:3px">Else: outside help or pause</li></ul></td></tr><tr><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-weight:600;font-size:12px;color:var(--text)">Legal &amp; security sign-off</td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;text-align:center;background:#FAEEDA"><span style="font-weight:700;font-size:11.5px;color:#B26A00">🟠 Important</span></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Governance / data-access approved ✅</li><li style="margin-bottom:3px">Remaining: <b>two legal approvals</b> — Amplitude platform + event-taxonomy data ingestion</li></ul></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Get contract + SLA from Amplitude → legal (31 Jul)</li><li style="margin-bottom:3px">Trial env in parallel; mask GPV until signed</li></ul></td></tr><tr><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-weight:600;font-size:12px;color:var(--text)">Engineering time</td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;text-align:center;background:#FAEEDA"><span style="font-weight:700;font-size:11.5px;color:#B26A00">🟠 Important</span></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Dev hours stretched → timeline slips</li></ul></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Lean on platform self-serve; minimal dev; speed is the dev team's call</li></ul></td></tr><tr><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;font-weight:600;font-size:12px;color:var(--text)">Messaging tool (CEP)</td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top;text-align:center;background:#EAF3DE"><span style="font-weight:700;font-size:11.5px;color:#2E7D32">🟡 Lower</span></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Needed to act (nudges / win-back) — Phase 2 only</li></ul></td><td style="border:1px solid var(--border);padding:9px 11px;vertical-align:top"><ul style="margin:0;padding-left:16px;font-size:11.5px;color:var(--text2);line-height:1.55"><li style="margin-bottom:3px">Interim HubSpot (HK) + Mailchimp; choose after the POC</li></ul></td></tr></tbody>
+  </table>
+</div>
+
+<!-- RISK REGISTER -->
+<div class="section">
+  <div class="s-title"><span class="s-num" style="background:var(--red-bg);color:var(--red-text)">R</span>Risk register — updated May 20, 2026</div>
+  <div class="s-sub">Risks from vendor evaluation + Digital Growth alignment, May 19. Severity = impact × likelihood.</div>
+
+  <table style="width:100%;border-collapse:separate;border-spacing:0;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;font-size:12px">
+    <thead>
+      <tr>
+        <th style="background:var(--bg3);padding:9px 12px;text-align:left;font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.4px;width:20%;border-bottom:1px solid var(--border)">Risk</th>
+        <th style="background:var(--bg3);padding:9px 12px;text-align:left;font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.4px;width:37%;border-bottom:1px solid var(--border)">Impact if realised</th>
+        <th style="background:var(--bg3);padding:9px 12px;text-align:left;font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.4px;width:35%;border-bottom:1px solid var(--border)">Mitigation</th>
+        <th style="background:var(--bg3);padding:9px 12px;text-align:center;font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.4px;width:8%;border-bottom:1px solid var(--border)">Level</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text);font-weight:600">Merchant identity for the POC <span style="display:block;font-weight:400;font-size:10.5px;color:var(--text2);margin-top:4px">Email-stitched in the CDP; full One ID is Phase 2+ (AFP-first).</span></td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Full One ID is AFP-first (HK later) and outlet-level — not the POC key</li>
+            <li>· Profiles deduplicate poorly — same merchant appears as multiple records</li>
+            <li>· Multi-outlet identity broken — SID can't be resolved as primary node</li>
+            <li>· Attribution chain unreliable — campaign → activation stitching breaks</li>
+            <li>· Without a stable per-merchant key + schema in the CDP, merchant-level tracking is blocked</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Product + Data define &amp; supply a stable unique identifier + event schema; the CDP stitches identity — no One ID reprioritisation needed</li>
+            <li>· Fallback: composite key (e.g. business reg. no. + mobile) if no single field is reliable</li>
+            <li>· Proceed in parallel — basic analytics live, full-quality use cases gated</li>
+            <li>· Acknowledge degraded mode proactively — not post-launch</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;vertical-align:top"><span style="display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:var(--red-bg);color:var(--red-text)">High</span></td>
+      </tr>
+
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text);font-weight:600">Data &amp; product team non-commitment</td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· JieHuan + Kai not responding to DG requests — CDP not on their priority list</li>
+            <li>· Taxonomy can't be validated without data team</li>
+            <li>· Pipeline work stalls — SID model can't be confirmed</li>
+            <li>· Deal breaker — no workaround exists</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Leadership mandate required — must come as a leadership directive, not a working-team request</li>
+            <li>· Formal kickoff with capacity commitments documented</li>
+            <li>· If capacity can't be carved out: external resource or stop — yes or no, no middle ground</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;vertical-align:top"><span style="display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:var(--red-bg);color:var(--red-text)">High</span></td>
+      </tr>
+
+
+
+
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text);font-weight:600">HubSpot deliverability risk <span style="display:inline-block;font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;background:var(--coral-bg);color:var(--coral-text);margin-left:4px">New · May 19</span></td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Single HubSpot instance = shared email domain + sender IP across all markets</li>
+            <li>· One market's bad list hygiene affects all others' sender reputation</li>
+            <li>· Already occurring today — manual list uploads, no unsubscribe hygiene confirmed</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Enforce list hygiene standards before any new market scale</li>
+            <li>· Segment sender reputation by subdomain where possible</li>
+            <li>· If structural (not hygiene-solvable) → strengthens Phase 2 CEP case — one of the 5 CEP conditions</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;vertical-align:top"><span style="display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:var(--amber-bg);color:var(--amber-text)">Med</span></td>
+      </tr>
+
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text);font-weight:600">SensorData schema debt <span style="display:inline-block;font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;background:var(--bg3);color:var(--text2);margin-left:4px">Status unsure</span></td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Events firing with Chinese naming conventions + v1/v2 conflicts</li>
+            <li>· Every week without schema lock = more cleanup debt before CDP is usable</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top">
+          <ul style="list-style:none;padding:0;margin:0;color:var(--text2);line-height:1.9;font-size:11.5px">
+            <li>· Phase 0 exit criterion: taxonomy locked before any events ingest into Amplitude</li>
+            <li>· Amplitude Govern enforces schema from Day 1</li>
+            <li>· SensorData replacement = clean slate — assessment in progress</li>
+          </ul>
+        </td>
+        <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;vertical-align:top"><span style="display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:var(--amber-bg);color:var(--amber-text)">Med</span></td>
+      </tr>
+
+
+    </tbody>
+  </table>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>KPay Digital Growth · Martech Programme · Owner: Martech PM, Digital Growth · Reviewed: Head of Digital Growth</div>
+  <div>v2.8 · Jun 11, 2026 · Kick-off pre-read · Status: leadership sign-off pending — POC must prove value · 3 escalations for leadership: (1) Data + Product team mandate (data team to supply the identity key + event schema) (2) lifecycle definitions sign-off + owner (3) legal sign-off for Amplitude · Open decision: acquisition vs lifecycle parallel (business case)</div>
+</div>
+
+</body>
+</html>
